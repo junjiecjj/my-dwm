@@ -146,6 +146,8 @@ static const char *chromium[] = {"google-chrome-stable", "--disk-cache-dir=/tmp/
 static const char *dolphin[] = {"dolphin", NULL};	 	  //#定义dolphin文件管理器的快捷键功能
 static const char *nautilus[] = {"nautilus", NULL};	 	  //#定义dolphin文件管理器的快捷键功能
 static const char *slimlockcmd[]  = { "slimlock", NULL };
+static const char *slocklockcmd[]  = { "slock", NULL };
+static const char *xscreensaverlockcmd[]  = { "xscreensaver", NULL };
 
 
 
@@ -162,7 +164,6 @@ static Key keys[] = {
     { MODKEY,              XK_c,                    spawn,          {.v = browsercmd } },// win+c 呼出chromium浏览器
     { MODKEY|ShiftMask,    XK_t,                    spawn,          {.v = trayercmd } },// win+shift+t 呼出系统托盘
     { MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = sktogglecmd } },//调出screenkey
-    // { MODKEY|Mod1Mask,     XK_l,                    spawn,          {.v = slockcmd } },//锁屏
 	{ MODKEY|Mod1Mask,     XK_l,                    spawn,          SHCMD("slock") },  //减少当前窗格应用的透明度
     { 0,                   XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },//降低音量
     { 0,                   XF86XK_AudioMute,        spawn,          {.v = mutevol } },  //静音
@@ -231,7 +232,9 @@ static Key keys[] = {
     { MODKEY|ShiftMask,    XK_q,                   killclient,     {0} },//关闭当前窗口，强制关闭窗口。最后参数NULL
 	{ MODKEY|ControlMask,  XK_Escape,              quit,           {0} }, 	//Ctrl+Alt+del，关闭并退出整个dwm桌面，且强制关闭所有当前运行于dwm下的程序
 	//以下是增加的
-	{ MODKEY|ControlMask,   XK_l,                    spawn,          {.v = slimlockcmd } },  //锁屏
+	/* { MODKEY|ControlMask,   XK_l,                    spawn,          {.v = slimlockcmd } },  //锁屏 */
+    { MODKEY|ControlMask,   XK_l,                    spawn,          {.v = slockcmd } },//锁屏
+    { MODKEY|ControlMask,   XK_x,                    spawn,          {.v = xscreensaverlockcmd } },//锁屏
     { MODKEY|ShiftMask,     XK_Up,                   spawn,          {.v = lightup} },
     { MODKEY|ShiftMask,     XK_Down,                 spawn,          {.v = lightdown} },  // Shift+win+上/下方向键，调整屏幕亮度
     { MODKEY|ShiftMask,     XK_Right,                spawn,          {.v = volup} },
