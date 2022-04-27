@@ -23,10 +23,24 @@ static const Bool viewontag         = True;     /* Switch view on tag switch */
 // static const char *fonts[]          = { "FiraCode Nerd Font Mono:size=12" };
 // static const char *fonts[]          = { "JetBrainsMono Nerd Font Mono:size=12" };
 // static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=12" };
+// static const char *fonts[]          = { "YaHei Consolas Hybrid:size=12" };
+// static const char *fonts[]          = { "Cascadia Code SemiLight:size=12" };
+// static const char *fonts[]          = { "Cascadia Code ExtraLight:size=12" };
+// static const char *fonts[]          = { "CaskaydiaCove Nerd Font:style=Regular:size=12" };
+// static const char *fonts[]          = { "CaskaydiaCove Nerd Font:style=SemiLight:size=12" };
+// static const char *fonts[]          = { "CaskaydiaCove Nerd Font:style=Light:size=12" };
+// static const char *fonts[]          = { "CaskaydiaCove Nerd Font:style=ExtraLight:size=12" };
+// static const char *fonts[]          = { "CaskaydiaCove Nerd Font Mono:style=Regular:size=12" };
+static const char *fonts[]          = { "CaskaydiaCove Nerd Font Mono:style=SemiLight:size=12" };
+// static const char *fonts[]          = { "CaskaydiaCove Nerd Font Mono:style=Light:size=12" };
+// static const char *fonts[]          = { "CaskaydiaCove Nerd Font Mono:style=ExtraLight:size=12" };
 // static const char *fonts[]          = { "SauceCodePro Nerd Font:size=12" };
-static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=12" };
+// static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=12" };
+
 // static const char dmenufont[]       = "JetBrains Nerd Font Mono:size=12";
-static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=12";
+// static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=12";
+static const char dmenufont[]       = "CaskaydiaCove Nerd Font Mono:style=SemiLight:size=12";
+
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -50,8 +64,8 @@ static const unsigned int alphas[][3]      = {
 /* tagging */
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 // static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
-// static const char *tags[] = { "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" };
-static const char *tags[] = { "\uf120", "\uf7ae", "\uf121", "\uf04b", "\ue62e", "\uf251", "\ue727", "\uf537", "\uf684" };  /*图标对应的ASCLL码：https://www.nerdfonts.com/cheat-sheet*/
+static const char *tags[] = { "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" };
+// static const char *tags[] = { "\uf120", "\uf7ae", "\uf121", "\uf04b", "\ue62e", "\uf251", "\ue727", "\uf537", "\uf684" };  [>图标对应的ASCLL码：https://www.nerdfonts.com/cheat-sheet<]
 
 static const Rule rules[] = {
 	/* xprop(1):
