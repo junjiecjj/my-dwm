@@ -120,7 +120,8 @@ print_bat(){
 }
 
 print_date(){
-	date '+%Y年%m月%d日%a %H:%M'
+	# date '+%Y年%m月%d日 周%a %H:%M:%S'
+	date '+%Y/%m/%d 周%a %H:%M:%S'
 }
 
 show_record(){
