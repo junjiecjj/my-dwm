@@ -12,3 +12,9 @@ xfce4-power-manager &
 xfce4-volumed-pulse &
 /bin/bash ./run-mailsync.sh &
 ./autostart_wait.sh &
+
+fcitx &
+
+dwmstatus 2>&1 >/dev/null &
+
+redshift &
