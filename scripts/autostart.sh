@@ -21,6 +21,11 @@ xfce4-volumed-pulse &
 
 fcitx &
 
+fcitx5 &
+
 dwmstatus 2>&1 >/dev/null &
 
 redshift &
+
+
+numlockx on
