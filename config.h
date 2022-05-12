@@ -107,10 +107,10 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
-// win+num查看指定的标签页
-// win+Contrl+num将当前标签页与指定的标签页一起查看，但是当再次切换标签页时此标签页又复原
+// win+num(1-9)查看指定的标签页,,win+0，全部标签页一起查看
+// win+Contrl+num将当前标签页与指定的标签页一起查看，但是当再次切换标签页时此标签页又复原,win+control+0无效
 // win + shift + num,移动当前窗口至指定的桌面标签,并聚焦于指定标签的桌面，
-// win_shift+control+num,将当前窗口复制一份到指定标签桌面，但仍然聚焦在当前标签页,如果此时再按win+ctrl+num则复制的窗口不会重复显示
+// win_shift+control+num,将当前窗口复制一份到指定标签桌面，但仍然聚焦在当前标签页,如果此时再按win+ctrl+num则复制的窗口不会重复显示,再重复一次相同的W+S+C+num,复制取消;
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
