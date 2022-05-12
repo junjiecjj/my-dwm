@@ -236,32 +236,32 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_space,                togglefloating, {0} },              // Alt + shift + 空格,切换是否浮动。最后参数NULL
 	{ MODKEY|ShiftMask,    XK_f,                    fullscreen,     {0} },       // win+shift+f全屏
 
-	// { MODKEY,              XK_comma,                focusmon,       {.i = -1 } },  //win+,多屏时在主副屏之间移动焦点# 移动焦点至左边屏幕，
-	// { MODKEY,              XK_period,               focusmon,       {.i = +1 } },  //win+. 在多显示器间进行切换 # 移动焦点至右边屏幕
-	// { MODKEY|ShiftMask,    XK_comma,                tagmon,         {.i = -1 } },	//win+shift+,  在主副屏之间移动窗口 # 移动窗口至左边屏幕
-	// { MODKEY|ShiftMask,    XK_period,               tagmon,         {.i = +1 } },	//win+shift+. 在多显示器间移动# 移动窗口至右边屏幕
+	// { MODKEY,              XK_comma,                focusmon,       {.i = -1 } },  //win+,多屏时在主副屏之间移动焦点, 移动焦点至左边屏幕，
+	// { MODKEY,              XK_period,               focusmon,       {.i = +1 } },  //win+. 在多显示器间进行切换, 移动焦点至右边屏幕
+	// { MODKEY|ShiftMask,    XK_comma,                tagmon,         {.i = -1 } },	//win+shift+,  在主副屏之间移动窗口, 移动窗口至左边屏幕,但是仍然聚焦在当前屏幕
+	// { MODKEY|ShiftMask,    XK_period,               tagmon,         {.i = +1 } },	//win+shift+. 在多显示器间移动, 移动窗口至右边屏幕,但是仍然聚焦在当前屏幕
 
-	{ MODKEY,              XK_bracketleft,          focusmon,       {.i = -1 } },  //win+[多屏时在主副屏之间移动焦点# 移动焦点至左边屏幕，
-	{ MODKEY,              XK_bracketright,         focusmon,       {.i = +1 } },  //win+]在多显示器间进行切换 # 移动焦点至右边屏幕
-	{ MODKEY|ShiftMask,    XK_bracketleft,          tagmon,         {.i = -1 } },	//win+shift+[  在主副屏之间移动窗口 # 移动窗口至左边屏幕
-	{ MODKEY|ShiftMask,    XK_bracketright,         tagmon,         {.i = +1 } },	//win+shift+] 在多显示器间移动# 移动窗口至右边屏幕
+	{ MODKEY,              XK_bracketleft,          focusmon,       {.i = -1 } },  //win+[多屏时在主副屏之间移动焦点, 移动焦点至左边屏幕，
+	{ MODKEY,              XK_bracketright,         focusmon,       {.i = +1 } },  //win+]在多显示器间进行切换. 移动焦点至右边屏幕
+	{ MODKEY|ShiftMask,    XK_bracketleft,          tagmon,         {.i = -1 } },	//win+shift+[  在主副屏之间移动窗口, 移动窗口至左边屏幕,但是仍然聚焦在当前屏幕
+	{ MODKEY|ShiftMask,    XK_bracketright,         tagmon,         {.i = +1 } },	//win+shift+] 在多显示器间移动, 移动窗口至右边屏幕,但是仍然聚焦在当前屏幕
 	/* { MODKEY|ShiftMask,    XK_braceleft,            tagmon,         {.i = -1 } },	//win+shift+{  在主副屏之间移动窗口 # 移动窗口至左边屏幕 */
 	/* { MODKEY|ShiftMask,    XK_braceright,           tagmon,         {.i = +1 } },	//win+shift+} 在多显示器间移动# 移动窗口至右边屏幕 */
 
     { MODKEY,              XK_h,                    viewtoleft,     {0} },        // win+h 移动到左边的标签页
 	{ MODKEY,              XK_l,                    viewtoright,    {0} },        // win+l 移动到右边的标签页
-	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },        // win+Shift+h 将当前窗口移动到左边的标签页
-	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },        // win+shift+l将当前窗口移动到右边的标签页
+	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },        // win+Shift+h 将当前窗口移动到左边的标签页,但是仍然聚焦在当前标签页
+	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },        // win+shift+l将当前窗口移动到右边的标签页,但是仍然聚焦在当前标签页
 
     { MODKEY,              XK_comma,                viewtoleft,     {0} },        // win+, 移动到左边的标签页
 	{ MODKEY,              XK_period,               viewtoright,    {0} },        // win+. 移动到右边的标签页
-	{ MODKEY|ShiftMask,    XK_comma,                tagtoleft,      {0} },        // win+shift+, 将当前窗口移动到左边的标签页
-	{ MODKEY|ShiftMask,    XK_period,               tagtoright,     {0} },        // win+shift+. 将当前窗口移动到右边的标签页
+	{ MODKEY|ShiftMask,    XK_comma,                tagtoleft,      {0} },        // win+shift+, 将当前窗口移动到左边的标签页,但是仍然聚焦在当前标签页
+	{ MODKEY|ShiftMask,    XK_period,               tagtoright,     {0} },        // win+shift+. 将当前窗口移动到右边的标签页,但是仍然聚焦在当前标签页
 
     { MODKEY,              XK_Left,                viewtoleft,     {0} },        // win+left 移动到左边的标签页
 	{ MODKEY,              XK_Right,               viewtoright,    {0} },        // win+right 移动到右边的标签页
-	{ MODKEY|ShiftMask,    XK_Left,                tagtoleft,      {0} },        // win+shift+left  将当前窗口移动到左边的标签页,
-	{ MODKEY|ShiftMask,    XK_Right,               tagtoright,     {0} },        // win+shift+right 将当前窗口移动到右边的标签页
+	{ MODKEY|ShiftMask,    XK_Left,                tagtoleft,      {0} },        // win+shift+left  将当前窗口移动到左边的标签页,但是仍然聚焦在当前标签页
+	{ MODKEY|ShiftMask,    XK_Right,               tagtoright,     {0} },        // win+shift+right 将当前窗口移动到右边的标签页,但是仍然聚焦在当前标签页
 
     // Mod + shift + num(1-9),移动窗口至指定的桌面标签,并聚焦于指定标签的桌面，最后参数tags[数字]指定的桌面标签,
     // win+shift+0将当前窗口移动到所有标签页,再做一次win+shift+1-9可以取消这一操作
