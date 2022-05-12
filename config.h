@@ -100,13 +100,17 @@ static const Layout layouts[] = {
 	{ "HHH",      grid },                       //网格分割
 };
 
-/* key definitions */
+/* key definitions,Mod4为win键,Mod1为Alt键 */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+// win+num查看指定的标签页
+// win+Contrl+num将当前标签页与指定的标签页一起查看，但是当再次切换标签页时此标签页又复原
+// win + shift + num,移动当前窗口至指定的桌面标签,并聚焦于指定标签的桌面，
+// win_shift+control+num,将当前窗口复制一份到指定标签桌面，但仍然聚焦在当前标签页,如果此时再按win+ctrl+num则复制的窗口不会重复显示
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -154,68 +158,113 @@ static const char *xscreensaverlockcmd[]  = { "xscreensaver", NULL };
  * 移动窗口: Mod + 鼠标左键
  * */
 static Key keys[] = {
+
+    //应用快捷键
 	/* modifier            key                      function        argument */
-    { MODKEY,              XK_d,                    spawn,          {.v = dmenucmd } }, // win+s打开 dmen 面板（应用菜单）呼出dmenu应用程序启动器
-    { MODKEY,              XK_r,                    spawn,          {.v = roficmd } }, // win+s打开 dmen 面板（应用菜单）呼出rofi应用程序启动器
+    { MODKEY,              XK_d,                    spawn,          {.v = dmenucmd } },     // win+s打开 dmen 面板（应用菜单）呼出dmenu应用程序启动器
+    { MODKEY,              XK_r,                    spawn,          {.v = roficmd } },      // win+s打开 dmen 面板（应用菜单）呼出rofi应用程序启动器
+    { MODKEY,              XK_Return,               spawn,          {.v = termcmd } },      // win+回车新建一个窗格，（开一个终端应用（st））
+    { MODKEY,              XK_grave,                togglescratch,  {.v = scratchpadcmd } },//win+` 打开一个命令行终端小窗格窗口
+    { MODKEY,              XK_x,                    spawn,          {.v = xtermcmd } },     // win+x 新建一个窗格，（开一个终端应用（xterm））
+    { MODKEY,              XK_t,                    spawn,          {.v = typoracmd } },    // win+t 新建一个窗格，（开一个终端应用（typora））
+    { MODKEY,              XK_c,                    spawn,          {.v = browsercmd } },   // win+c 呼出chromium浏览器
+    { MODKEY,              XK_g,                    spawn,          {.v = chromium } },     // win+g，呼出chromium浏览器
+    // { MODKEY,               XK_d,                    spawn,          {.v = dolphin } },  // win+d，呼出dolphin文件管理器
+    { MODKEY,              XK_n,                    spawn,          {.v = nautilus } },     // win+n，呼出dolphin文件管理器
+    { MODKEY,              XK_b,                    spawn,          {.v = wpcmd } },        //win+b换壁纸
+    { MODKEY|ShiftMask,    XK_t,                    spawn,          {.v = trayercmd } },    // win+shift+t 呼出系统托盘
+    { MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = sktogglecmd } },  //调出screenkey
+
+    //系统快捷键
     { 0,                   XK_Print,                spawn,          {.v = screenshotcmd } },  //PrtSc 截图
     { MODKEY,              XK_f,                    spawn,          {.v = screenshotcmd } },  //win+f  截图
-    { MODKEY,              XK_Return,               spawn,          {.v = termcmd } },// win+回车新建一个窗格，（开一个终端应用（st））
-    { MODKEY,              XK_grave,                togglescratch,  {.v = scratchpadcmd } },//win+` 打开一个命令行终端小窗格窗口
-    { MODKEY,              XK_x,                    spawn,          {.v = xtermcmd } },// win+x 新建一个窗格，（开一个终端应用（xterm））
-    { MODKEY,              XK_t,                    spawn,          {.v = typoracmd } },// win+t 新建一个窗格，（开一个终端应用（typora））
-    { MODKEY,              XK_c,                    spawn,          {.v = browsercmd } },// win+c 呼出chromium浏览器
-    { MODKEY|ShiftMask,    XK_t,                    spawn,          {.v = trayercmd } },// win+shift+t 呼出系统托盘
-    { MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = sktogglecmd } },//调出screenkey
-    { 0,                   XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },//降低音量
-    { 0,                   XF86XK_AudioMute,        spawn,          {.v = mutevol } },  //静音
-    { 0,                   XF86XK_AudioRaiseVolume, spawn,          {.v = upvol   } },//增加音量
-    { MODKEY,              XK_bracketleft,          spawn,          {.v = downvol } },// win+[ 降低音量
-    { MODKEY,              XK_backslash,            spawn,          {.v = mutevol } },// win+\ 静音
-    { MODKEY,              XK_bracketright,         spawn,          {.v = upvol   } },// win+] 增加音量
-    { MODKEY,              XK_b,                    spawn,          {.v = wpcmd } }, //win+b换壁纸
-    //{ MODKEY|ShiftMask|ControlMask,    XK_q,        spawn,          {.v = setqwertycmd } },//win+shift+ctrl+q 键盘模式为qwerty
-    //{ MODKEY|ShiftMask|ControlMask,    XK_c,        spawn,          {.v = setcolemakcmd } },//win+shift+ctrl+c 键盘模式为colemal
-    { MODKEY|ControlMask,  XK_s,                    spawn,          {.v = suspendcmd } },  // win+ctrl+s休眠
-    { MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } }, //顺时针循环滚动当前窗口的窗格位置
-    { MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },//逆时针循环滚动当前窗口的窗格位置
-    { MODKEY,              XK_Up,                   focusstack,     {.i = +1 } },	//将光标焦点移动到下一个窗格,在窗口间切换
-    { MODKEY,              XK_Down,                 focusstack,     {.i = -1 } },   //将光标焦点移动到上一个窗格
-    { MODKEY,              XK_j,                    incnmaster,     {.i = +1 } },//插入主窗格的堆栈，窗口竖向排列
-    { MODKEY,              XK_k,                    incnmaster,     {.i = -1 } },//减少主窗格的堆栈数，窗口横向排列
-    { MODKEY,              XK_Left,                 setmfact,       {.f = -0.03} },//将当前的窗格宽度减向左扩展或缩小,调整窗口大小向左
-    { MODKEY,              XK_Right,                setmfact,       {.f = +0.03} },   // win+左/右方向键，调整程序窗口的大小,调整窗口大小向右
-	{ MODKEY,              XK_m,                    hidewin,        {0} }, // win+m 最小化/隐藏藏 当前窗格
-	{ MODKEY|ShiftMask,    XK_m,                    restorewin,     {0} }, // win+shift+m 恢复当前窗口下隐藏的窗格,非全部，一次一个恢复
-	{ MODKEY,              XK_o,                    hideotherwins,  {0}},  // win+ o 最小化/隐藏藏除当前外的其他窗格
-	{ MODKEY|ShiftMask,    XK_o,                    restoreotherwins, {0}},// win+shift+o 恢复当前窗口下隐藏除当前外的其他窗格
-	{ MODKEY|ShiftMask,    XK_Return,               zoom,           {0} }, //win+shift+回车，窗口位置互换， 将当前窗口与主窗口互换，若是当前是主窗口则将其与上一个窗格互换，并聚焦在主窗格
-	{ MODKEY,              XK_Tab,                  view,           {0} }, //查看桌面标签。最后参数可以是NULL（全局查看）或是tags[数字]指定的桌面标签
-	{ MODKEY|Mod1Mask,     XK_0,                    setlayout,     {.v = &layouts[0]} }, //平铺
-	{ MODKEY|Mod1Mask,     XK_1,                    setlayout,     {.v = &layouts[1]} },  //浮动
-	{ MODKEY|Mod1Mask,     XK_2,                    setlayout,     {.v = &layouts[2]} },  //单窗口
-	{ MODKEY|Mod1Mask,     XK_3,                    setlayout,     {.v = &layouts[3]} },  //主窗堆在上，副窗堆在下，副窗格垂直分割
-	{ MODKEY|Mod1Mask,     XK_4,                    setlayout,     {.v = &layouts[4]} },  //主窗堆在上，副窗堆在下，副窗格水平分割
-	{ MODKEY|Mod1Mask,     XK_5,                    setlayout,     {.v = &layouts[5]} },  //主窗口在中间，副窗口在左右边，副窗口垂直分割
-	{ MODKEY|Mod1Mask,     XK_6,                    setlayout,     {.v = &layouts[6]} },  //主窗口浮动在中间，副窗口平铺在后面，副窗口水平分割
-	{ MODKEY|Mod1Mask,     XK_7,                    setlayout,      {.v = &layouts[7]} }, //网格分割
-	{ MODKEY,              XK_space,                setlayout,      {0} },   //窗口模式切换,Alt + 空格,Alt + shift + 空格, 全铺和Title模式中切换
-	{ MODKEY|ShiftMask,    XK_space,                togglefloating, {0} },//切换是否浮动。最后参数NULL
-	{ MODKEY,              XK_9,                    setlayout,      {.v = &layouts[9]} },  //将当前窗口的窗格模式改为网格模式,一列两行、两行两列、三行三列..
-	{ MODKEY|ShiftMask,    XK_f,                    fullscreen,     {0} },       // win+shift+f全屏
-	{ MODKEY,              XK_comma,                focusmon,       {.i = -1 } },  //win+,多屏时在主副屏之间移动焦点# 移动焦点至左边屏幕，
-	{ MODKEY,              XK_period,               focusmon,       {.i = +1 } },  //win+. 在多显示器间进行切换 # 移动焦点至右边屏幕
-	{ MODKEY|ShiftMask,    XK_comma,                tagmon,         {.i = -1 } },	//win+shift+,  在主副屏之间移动窗口 # 移动窗口至左边屏幕
-	{ MODKEY|ShiftMask,    XK_period,               tagmon,         {.i = +1 } },	//win+shift+. 在多显示器间移动# 移动窗口至右边屏幕
+    { 0,                   XF86XK_AudioLowerVolume, spawn,          {.v = downvol } },        //降低音量
+    { 0,                   XF86XK_AudioMute,        spawn,          {.v = mutevol } },        //静音
+    { 0,                   XF86XK_AudioRaiseVolume, spawn,          {.v = upvol   } },        //增加音量
+    { MODKEY,              XK_semicolon,            spawn,            {.v = downvol } },        // win+; 降低音量
+    { MODKEY,              XK_quoteright,           spawn,          {.v = upvol   } },         // win+' 增加音量
+    /* { MODKEY,              XK_bracketleft,          spawn,          {.v = downvol } },        // win+[ 降低音量 */
+    /* { MODKEY,              XK_bracketright,         spawn,          {.v = upvol   } },         // win+] 增加音量 */
+    { MODKEY,              XK_backslash,            spawn,          {.v = mutevol } },        // win+\ 静音
+    //{ MODKEY|ShiftMask|ControlMask,    XK_q,        spawn,          {.v = setqwertycmd } },  //win+shift+ctrl+q 键盘模式为qwerty
+    //{ MODKEY|ShiftMask|ControlMask,    XK_c,        spawn,          {.v = setcolemakcmd } }, //win+shift+ctrl+c 键盘模式为colemal
+	{ MODKEY|Mod1Mask,     XK_Down,                spawn,          SHCMD("transset-df -a --dec .1") },  //减少当前窗格应用的透明度
+	{ MODKEY|Mod1Mask,     XK_Up,                  spawn,          SHCMD("transset-df -a --inc .1") },  //增加当前窗格应用的透明度
+	{ MODKEY|Mod1Mask,     XK_Home,                spawn,          SHCMD("transset-df -a .75") },      //恢复当前窗格应用的初始默认的透明度
+	//以下是增加的
+	// { MODKEY|ControlMask,   XK_l,                    spawn,          {.v = slimlockcmd } },     //锁屏
+	{ MODKEY|Mod1Mask,      XK_l,                    spawn,          SHCMD("slock") },             //锁屏
+    { MODKEY|ControlMask,   XK_l,                    spawn,          {.v = slockcmd } },           //锁屏
+    { MODKEY|ControlMask,   XK_x,                    spawn,          {.v = xscreensaverlockcmd } },//锁屏
+    { MODKEY|ShiftMask,     XK_Up,                   spawn,          {.v = lightup} },      // Shift+win+上方向键，屏幕变亮
+    { MODKEY|ShiftMask,     XK_Down,                 spawn,          {.v = lightdown} },    // Shift+win+下方向键，屏幕变暗
+    { MODKEY|ShiftMask,     XK_Right,                spawn,          {.v = volup} },        // Shift+win+右方向键，调整音量大
+    { MODKEY|ShiftMask,     XK_Left,                 spawn,          {.v = voldown} },      // Shift+win+左方向键，调整音量小
+    { MODKEY|ShiftMask,     XK_m,                    spawn,          {.v = mute} },  	    // Shift+win+m，开启/关闭静音
 
-	{ MODKEY,              XK_less,                 focusmon,       {.i = -1 } },  //win+,多屏时在主副屏之间移动焦点# 移动焦点至左边屏幕，
-	{ MODKEY,              XK_greater,              focusmon,       {.i = +1 } },  //win+. 在多显示器间进行切换 # 移动焦点至右边屏幕
-	{ MODKEY|ShiftMask,    XK_less,                 tagmon,         {.i = -1 } },	//win+shift+,  在主副屏之间移动窗口 # 移动窗口至左边屏幕
-	{ MODKEY|ShiftMask,    XK_greater,              tagmon,         {.i = +1 } },	//win+shift+. 在多显示器间移动# 移动窗口至右边屏幕
-    { MODKEY,              XK_h,                    viewtoleft,     {0} },        // 移动到左边的标签页
-	{ MODKEY,              XK_l,                    viewtoright,    {0} },        // 移动到右边的标签页
-	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },        // 将当前窗口移动到左边的标签页
-	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },        // 将当前窗口移动到右边的标签页
-	{ MODKEY|ShiftMask,    XK_0,                    tag,            {.ui = ~0 } },//切换指定的窗口到达指定的桌面标签。最后参数tags[数字]指定的桌面标签,//Mod + shift + num,移动窗口至某标签页,并不需要下面的注释的几行就可以用
+    { MODKEY|ControlMask,  XK_s,                    spawn,          {.v = suspendcmd } },  // win+ctrl+s休眠
+    { MODKEY|ShiftMask,    XK_q,                   killclient,     {0} },                  //关闭当前窗口，强制关闭窗口。最后参数NULL
+	{ MODKEY|ControlMask,  XK_Escape,              quit,           {0} },                  //Ctrl+Alt+del，关闭并退出整个dwm桌面，且强制关闭所有当前运行于dwm下的程序
+
+
+    //窗口快捷键
+    { MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },     // Win+shift+j 顺时针循环滚动当前窗口的窗格位置
+    { MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },     // Win+shift+k 逆时针循环滚动当前窗口的窗格位置
+    { MODKEY,              XK_Up,                   focusstack,     {.i = +1 } },	  // win+Up 将光标焦点移动到下一个窗格,在窗口间切换
+    { MODKEY,              XK_Down,                 focusstack,     {.i = -1 } },     // win+Down 将光标焦点移动到上一个窗格
+    { MODKEY,              XK_j,                    incnmaster,     {.i = +1 } },     // Win+j 插入主窗格的堆栈，窗口竖向排列
+    { MODKEY,              XK_k,                    incnmaster,     {.i = -1 } },     // Win+k 减少主窗格的堆栈数，窗口横向排列
+    { MODKEY,              XK_minus,                 setmfact,       {.f = -0.03} },   // Win+left 将当前的窗格宽度减向左扩展或缩小,调整窗口大小向左
+    { MODKEY,              XK_equal,                setmfact,       {.f = +0.03} },   // win+right，调整程序窗口的大小,调整窗口大小向右
+    /* { MODKEY,              XK_Left,                 setmfact,       {.f = -0.03} },   // Win+left 将当前的窗格宽度减向左扩展或缩小,调整窗口大小向左 */
+    /* { MODKEY,              XK_Right,                setmfact,       {.f = +0.03} },   // win+right，调整程序窗口的大小,调整窗口大小向右 */
+	{ MODKEY,              XK_m,                    hidewin,        {0} },      // win+m 最小化/隐藏藏 当前窗格
+	{ MODKEY|ShiftMask,    XK_m,                    restorewin,     {0} },      // win+shift+m 恢复当前窗口下隐藏的窗格,非全部，一次一个恢复
+	{ MODKEY,              XK_o,                    hideotherwins,  {0}},       // win+ o 最小化/隐藏藏除当前外的其他窗格
+	{ MODKEY|ShiftMask,    XK_o,                    restoreotherwins, {0}},     // win+shift+o 恢复当前窗口下隐藏除当前外的其他窗格
+	{ MODKEY|ShiftMask,    XK_Return,               zoom,           {0} },      // win+shift+回车，窗口位置互换， 将当前窗口与主窗口互换，若是当前是主窗口则将其与上一个窗格互换，并聚焦在主窗格
+	{ MODKEY,              XK_Tab,                  view,           {0} },      // win+tab 查看桌面标签。最后参数可以是NULL（全局查看）或是tags[数字]指定的桌面标签
+	{ MODKEY|Mod1Mask,     XK_0,                    setlayout,      {.v = &layouts[0]} },  // win+alt+0 平铺
+	{ MODKEY|Mod1Mask,     XK_1,                    setlayout,      {.v = &layouts[1]} },  // win+alt+1 浮动
+	{ MODKEY|Mod1Mask,     XK_2,                    setlayout,      {.v = &layouts[2]} },  // win+alt+2 单窗口
+	{ MODKEY|Mod1Mask,     XK_3,                    setlayout,      {.v = &layouts[3]} },  // win+alt+3 主窗堆在上，副窗堆在下，副窗格垂直分割
+	{ MODKEY|Mod1Mask,     XK_4,                    setlayout,      {.v = &layouts[4]} },  // win+alt+4 主窗堆在上，副窗堆在下，副窗格水平分割
+	{ MODKEY|Mod1Mask,     XK_5,                    setlayout,      {.v = &layouts[5]} },  // win+alt+5 主窗口在中间，副窗口在左右边，副窗口垂直分割
+	{ MODKEY|Mod1Mask,     XK_6,                    setlayout,      {.v = &layouts[6]} },  // win+alt+6 主窗口浮动在中间，副窗口平铺在后面，副窗口水平分割
+	{ MODKEY|Mod1Mask,     XK_7,                    setlayout,      {.v = &layouts[7]} },  // win+alt+7 网格分割,一列两行、两行两列、三行三列..
+	{ MODKEY,              XK_space,                setlayout,      {0} },              // Alt + 空格,窗口模式切换 全铺和Title模式中切换
+	{ MODKEY|ShiftMask,    XK_space,                togglefloating, {0} },              // Alt + shift + 空格,切换是否浮动。最后参数NULL
+	{ MODKEY|ShiftMask,    XK_f,                    fullscreen,     {0} },       // win+shift+f全屏
+
+	// { MODKEY,              XK_comma,                focusmon,       {.i = -1 } },  //win+,多屏时在主副屏之间移动焦点# 移动焦点至左边屏幕，
+	// { MODKEY,              XK_period,               focusmon,       {.i = +1 } },  //win+. 在多显示器间进行切换 # 移动焦点至右边屏幕
+	// { MODKEY|ShiftMask,    XK_comma,                tagmon,         {.i = -1 } },	//win+shift+,  在主副屏之间移动窗口 # 移动窗口至左边屏幕
+	// { MODKEY|ShiftMask,    XK_period,               tagmon,         {.i = +1 } },	//win+shift+. 在多显示器间移动# 移动窗口至右边屏幕
+
+	{ MODKEY,              XK_bracketleft,          focusmon,       {.i = -1 } },  //win+[多屏时在主副屏之间移动焦点# 移动焦点至左边屏幕，
+	{ MODKEY,              XK_bracketright,         focusmon,       {.i = +1 } },  //win+]在多显示器间进行切换 # 移动焦点至右边屏幕
+	{ MODKEY|ShiftMask,    XK_bracketleft,          tagmon,         {.i = -1 } },	//win+shift+[  在主副屏之间移动窗口 # 移动窗口至左边屏幕
+	{ MODKEY|ShiftMask,    XK_bracketright,         tagmon,         {.i = +1 } },	//win+shift+] 在多显示器间移动# 移动窗口至右边屏幕
+	/* { MODKEY|ShiftMask,    XK_braceleft,            tagmon,         {.i = -1 } },	//win+shift+{  在主副屏之间移动窗口 # 移动窗口至左边屏幕 */
+	/* { MODKEY|ShiftMask,    XK_braceright,           tagmon,         {.i = +1 } },	//win+shift+} 在多显示器间移动# 移动窗口至右边屏幕 */
+
+    { MODKEY,              XK_h,                    viewtoleft,     {0} },        // win+h 移动到左边的标签页
+	{ MODKEY,              XK_l,                    viewtoright,    {0} },        // win+l 移动到右边的标签页
+	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },        // win+Shift+h 将当前窗口移动到左边的标签页
+	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },        // win+shift+l将当前窗口移动到右边的标签页
+
+    { MODKEY,              XK_comma,                viewtoleft,     {0} },        // 移动到左边的标签页
+	{ MODKEY,              XK_period,               viewtoright,    {0} },        // 移动到右边的标签页
+	{ MODKEY|ShiftMask,    XK_comma,                tagtoleft,      {0} },        // 将当前窗口移动到左边的标签页
+	{ MODKEY|ShiftMask,    XK_period,               tagtoright,     {0} },        // 将当前窗口移动到右边的标签页
+
+    { MODKEY,              XK_Left,                viewtoleft,     {0} },        // 移动到左边的标签页
+	{ MODKEY,              XK_Right,               viewtoright,    {0} },        // 移动到右边的标签页
+	{ MODKEY|ShiftMask,    XK_Left,                tagtoleft,      {0} },        // 将当前窗口移动到左边的标签页
+	{ MODKEY|ShiftMask,    XK_Right,               tagtoright,     {0} },        // 将当前窗口移动到右边的标签页
+
+
+	{ MODKEY|ShiftMask,      XK_0,                    tag,            {.ui = ~0 } },// Mod + shift + num,移动窗口至指定的桌面标签,并聚焦于指定标签的桌面，最后参数tags[数字]指定的桌面标签
     { MODKEY,              XK_0,                    view,           {.ui = ~0 } },// win+1/2/3/4/5/6/7/8/9，切换到不同的dwm顶部菜单栏的标签里,切换标签页
 	TAGKEYS(               XK_1,                      0)
 	TAGKEYS(               XK_2,                      1)
@@ -226,24 +275,6 @@ static Key keys[] = {
 	TAGKEYS(               XK_7,                      6)
 	TAGKEYS(               XK_8,                      7)
 	TAGKEYS(               XK_9,                      8)
-	{ MODKEY|Mod1Mask,     XK_Down,                spawn,          SHCMD("transset-df -a --dec .1") },  //减少当前窗格应用的透明度
-	{ MODKEY|Mod1Mask,     XK_Up,                  spawn,          SHCMD("transset-df -a --inc .1") },  //增加当前窗格应用的透明度
-	{ MODKEY|Mod1Mask,     XK_Home,                spawn,          SHCMD("transset-df -a .75") },  //恢复当前窗格应用的初始默认的透明度
-    { MODKEY|ShiftMask,    XK_q,                   killclient,     {0} },//关闭当前窗口，强制关闭窗口。最后参数NULL
-	{ MODKEY|ControlMask,  XK_Escape,              quit,           {0} }, 	//Ctrl+Alt+del，关闭并退出整个dwm桌面，且强制关闭所有当前运行于dwm下的程序
-	//以下是增加的
-	/* { MODKEY|ControlMask,   XK_l,                    spawn,          {.v = slimlockcmd } },  //锁屏 */
-    { MODKEY|ControlMask,   XK_l,                    spawn,          {.v = slockcmd } },//锁屏
-	{ MODKEY|Mod1Mask,     XK_l,                    spawn,          SHCMD("slock") },  //锁屏
-    { MODKEY|ControlMask,   XK_x,                    spawn,          {.v = xscreensaverlockcmd } },//锁屏
-    { MODKEY|ShiftMask,     XK_Up,                   spawn,          {.v = lightup} },
-    { MODKEY|ShiftMask,     XK_Down,                 spawn,          {.v = lightdown} },  // Shift+win+上/下方向键，调整屏幕亮度
-    { MODKEY|ShiftMask,     XK_Right,                spawn,          {.v = volup} },
-    { MODKEY|ShiftMask,     XK_Left,                 spawn,          {.v = voldown} },   // Shift+win+左/右方向键，调整音量大小
-    { MODKEY|ShiftMask,     XK_m,                    spawn,          {.v = mute} },  	   // Shift+win+m，开启/关闭静音
-    /* { MODKEY,               XK_d,                    spawn,          {.v = dolphin } },   // win+d，呼出dolphin文件管理器 */
-    { MODKEY,               XK_n,                    spawn,          {.v = nautilus } },   // win+n，呼出dolphin文件管理器
-    { MODKEY,               XK_g,                    spawn,          {.v = chromium } },   // win+g，呼出chromium浏览器
 };
 
 /* button definitions */
