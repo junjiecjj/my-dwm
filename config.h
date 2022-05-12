@@ -253,15 +253,15 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_h,                    tagtoleft,      {0} },        // win+Shift+h 将当前窗口移动到左边的标签页
 	{ MODKEY|ShiftMask,    XK_l,                    tagtoright,     {0} },        // win+shift+l将当前窗口移动到右边的标签页
 
-    { MODKEY,              XK_comma,                viewtoleft,     {0} },        // 移动到左边的标签页
-	{ MODKEY,              XK_period,               viewtoright,    {0} },        // 移动到右边的标签页
-	{ MODKEY|ShiftMask,    XK_comma,                tagtoleft,      {0} },        // 将当前窗口移动到左边的标签页
-	{ MODKEY|ShiftMask,    XK_period,               tagtoright,     {0} },        // 将当前窗口移动到右边的标签页
+    { MODKEY,              XK_comma,                viewtoleft,     {0} },        // win+, 移动到左边的标签页
+	{ MODKEY,              XK_period,               viewtoright,    {0} },        // win+. 移动到右边的标签页
+	{ MODKEY|ShiftMask,    XK_comma,                tagtoleft,      {0} },        // win+shift+, 将当前窗口移动到左边的标签页
+	{ MODKEY|ShiftMask,    XK_period,               tagtoright,     {0} },        // win+shift+. 将当前窗口移动到右边的标签页
 
-    { MODKEY,              XK_Left,                viewtoleft,     {0} },        // 移动到左边的标签页
-	{ MODKEY,              XK_Right,               viewtoright,    {0} },        // 移动到右边的标签页
-	{ MODKEY|ShiftMask,    XK_Left,                tagtoleft,      {0} },        // 将当前窗口移动到左边的标签页
-	{ MODKEY|ShiftMask,    XK_Right,               tagtoright,     {0} },        // 将当前窗口移动到右边的标签页
+    { MODKEY,              XK_Left,                viewtoleft,     {0} },        // win+left 移动到左边的标签页
+	{ MODKEY,              XK_Right,               viewtoright,    {0} },        // win+right 移动到右边的标签页
+	{ MODKEY|ShiftMask,    XK_Left,                tagtoleft,      {0} },        // win+shift+left  将当前窗口移动到左边的标签页,
+	{ MODKEY|ShiftMask,    XK_Right,               tagtoright,     {0} },        // win+shift+right 将当前窗口移动到右边的标签页
 
     // Mod + shift + num(1-9),移动窗口至指定的桌面标签,并聚焦于指定标签的桌面，最后参数tags[数字]指定的桌面标签,
     // win+shift+0将当前窗口移动到所有标签页,再做一次win+shift+1-9可以取消这一操作
