@@ -263,9 +263,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_Left,                tagtoleft,      {0} },        // 将当前窗口移动到左边的标签页
 	{ MODKEY|ShiftMask,    XK_Right,               tagtoright,     {0} },        // 将当前窗口移动到右边的标签页
 
-
-	{ MODKEY|ShiftMask,      XK_0,                    tag,            {.ui = ~0 } },// Mod + shift + num,移动窗口至指定的桌面标签,并聚焦于指定标签的桌面，最后参数tags[数字]指定的桌面标签
-    { MODKEY,              XK_0,                    view,           {.ui = ~0 } },// win+1/2/3/4/5/6/7/8/9，切换到不同的dwm顶部菜单栏的标签里,切换标签页
+    // Mod + shift + num(1-9),移动窗口至指定的桌面标签,并聚焦于指定标签的桌面，最后参数tags[数字]指定的桌面标签,
+    // win+shift+0将当前窗口移动到所有标签页,再做一次win+shift+1-9可以取消这一操作
+	{ MODKEY|ShiftMask,      XK_0,                    tag,            {.ui = ~0 } },
+    { MODKEY,              XK_0,                      view,           {.ui = ~0 } },// win+1/2/3/4/5/6/7/8/9，切换到不同的dwm顶部菜单栏的标签里,切换标签页,win+0，全部标签页一起查看
 	TAGKEYS(               XK_1,                      0)
 	TAGKEYS(               XK_2,                      1)
 	TAGKEYS(               XK_3,                      2)
