@@ -172,6 +172,12 @@ static const char *screenshotcmd[]  =          {"flameshot", "gui", NULL};
 static const char *scrotcmd[]       =          {"scrot", "-q", "100", "-s", "$HOME/图片/`date +%Y-%m-%d_%H:%M:%S`.png", NULL};
 static const char *slockcmd[]       =          { "slock", NULL };
 //以下是增加的
+static const char *upVol[]          = {"/usr/bin/pactl", "set-sink-volume", "0", "+3%", NULL};
+static const char *downVol[]        = {"/usr/bin/pactl", "set-sink-volume", "0", "-3%",  NULL};
+static const char *muteVol[]        = {"/usr/bin/pactl", "set-sink-mute", "0","toggle", NULL};
+static const char *upbrt[]          = {"light", "-A", "5", NULL};
+static const char *downbrt[]        = {"light", "-U", "5", NULL};
+
 static const char *volup[]          =          {"amixer", "-qM", "set", "Master", "2%+", "umute", NULL};
 static const char *voldown[]        =          {"amixer", "-qM", "set", "Master", "2%-", "umute", NULL}; //#定义系统音量大小调节的快捷键功能
 static const char *mute[]           =          {"amixer", "-qM", "set", "Master", "toggle", NULL};			 //#定义开 / 关静音的快捷键功能
@@ -219,14 +225,18 @@ static Key keys[] = {
     { 0,                                XF86XK_AudioRaiseVolume,    spawn,          {.v = upvol   } },        //增加音量
     { MODKEY|ShiftMask,                 XK_minus,                   spawn,          {.v = downvol } },        // win+shift+- 降低音量
     { MODKEY|ShiftMask,                 XK_equal,                   spawn,          {.v = upvol   } },        // win+shift+= 增加音量
-    /* { MODKEY,                        XK_semicolon,               spawn,          {.v = downvol } },     // win+; 降低音量 */
-    /* { MODKEY,                        XK_quoteright,              spawn,          {.v = upvol   } },     // win+' 增加音量 */
-    /* { MODKEY,                        XK_bracketleft,             spawn,          {.v = downvol } },     // win+[ 降低音量 */
-    /* { MODKEY,                        XK_bracketright,            spawn,          {.v = upvol   } },     // win+] 增加音量 */
     { MODKEY,                           XK_backslash,               spawn,          {.v = mutevol } },        // win+\ 静音
-    /* { MODKEY|ShiftMask,              XK_Right,                  spawn,          {.v = volup} },        // Shift+win+右方向键，调整音量大 */
-    /* { MODKEY|ShiftMask,              XK_Left,                   spawn,          {.v = voldown} },      // Shift+win+左方向键，调整音量小 */
+    { MODKEY|ControlMask,              XK_Up,                       spawn,          {.v = volup} },        // Control+win+右方向键，调整音量大
+    { MODKEY|ControlMask,              XK_Down,                     spawn,          {.v = voldown} },      // Control+win+左方向键，调整音量小
+    { MODKEY|ShiftMask,                XK_Up,                       spawn,          {.v = lightup} },      // Shift+win+上方向键，屏幕变亮
+    { MODKEY|ShiftMask,                XK_Down,                     spawn,          {.v = lightdown} },    // Shift+win+下方向键，屏幕变暗
     { MODKEY|ControlMask,               XK_m,                       spawn,          {.v = mute} },  	    // Shift+win+m，开启/关闭静音
+    /* XF86Keys */
+    {MODKEY,                         XF86XK_AudioMute,             spawn,           {.v = muteVol}},
+    {MODKEY,                         XF86XK_AudioLowerVolume,      spawn,           {.v = downVol}},
+    {MODKEY,                         XF86XK_AudioRaiseVolume,      spawn,           {.v = upVol}},
+    {0,                              XF86XK_MonBrightnessUp,       spawn,           {.v = upbrt}},
+    {0,                              XF86XK_MonBrightnessDown,     spawn,           {.v = downbrt}},
     //{ MODKEY|ShiftMask|ControlMask,       XK_q,           spawn,          {.v = setqwertycmd } },  //win+shift+ctrl+q 键盘模式为qwerty
     //{ MODKEY|ShiftMask|ControlMask,       XK_c,           spawn,          {.v = setcolemakcmd } }, //win+shift+ctrl+c 键盘模式为colemal
 	{ MODKEY|Mod1Mask,                   XK_Down,                    spawn,          SHCMD("transset-df -a --dec .1") },  //减少当前窗格应用的透明度
@@ -237,8 +247,6 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,                   XK_l,                    spawn,          SHCMD("slock") },             //锁屏
     { MODKEY|ControlMask,                XK_l,                    spawn,          {.v = slockcmd } },           //锁屏
     { MODKEY|ControlMask,                XK_x,                    spawn,          {.v = xscreensaverlockcmd } },//锁屏
-    { MODKEY|ShiftMask,         XK_Up,                   spawn,          {.v = lightup} },      // Shift+win+上方向键，屏幕变亮
-    { MODKEY|ShiftMask,         XK_Down,                 spawn,          {.v = lightdown} },    // Shift+win+下方向键，屏幕变暗
 
     { MODKEY|ControlMask,  XK_s,                    spawn,          {.v = suspendcmd } },  // win+ctrl+s休眠
     { MODKEY|ShiftMask,    XK_q,                    killclient,     {0} },                  //关闭当前窗口，强制关闭窗口。最后参数NULL
