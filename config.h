@@ -302,6 +302,8 @@ static Key keys[] = {
     { MODKEY,              XK_l,                    focusstack,     {.i = -1 } },     // win+l 将光标焦点移动到下一个窗格,在同一个标签页的不同窗口间切换,
     { MODKEY,              XK_period,               focusstack,     {.i = +1 } },	  // win+, 将光标焦点移动到上一个窗格,在同一个标签页的不同窗口间切换,
     { MODKEY,              XK_comma,                focusstack,     {.i = -1 } },     // win+. 将光标焦点移动到下一个窗格,在同一个标签页的不同窗口间切换,
+    { MODKEY,              XK_q,                    focusstack,     {.i = +1 } },	  // win+q 将光标焦点移动到上一个窗格,在同一个标签页的不同窗口间切换,
+    { MODKEY,              XK_w,                    focusstack,     {.i = -1 } },     // win+w 将光标焦点移动到下一个窗格,在同一个标签页的不同窗口间切换,
 
 	{ MODKEY|ShiftMask,    XK_h,                    viewtoleft,       {0} },        // win+Shift+h 将光标焦点移动到左边的标签页
 	{ MODKEY|ShiftMask,    XK_l,                    viewtoright,      {0} },        // win+shift+l 将光标焦点移动到右边的标签页
