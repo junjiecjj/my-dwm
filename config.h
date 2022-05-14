@@ -74,16 +74,59 @@ static char selfgcolor[]            = "#00ff00";
 static char selbordercolor[]        = "#005577";
 static char selbgcolor[]            = "#005577";
 static char *colors[][3] = {
-       /*               fg           bg           border   */
+       //               fg           bg           border
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 static const unsigned int alphas[][3] = {
-	/*               fg      bg        border     */
+	//               fg      bg        border
 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
+
+/* //配色5,nord */
+/* static const unsigned int baralpha = 0xff; */
+/* static const unsigned int borderalpha = OPAQUE; */
+/* static const unsigned int alphas[][3] = { */
+/* 	//               fg      bg        border */
+/* 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha }, */
+/* 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha }, */
+/* }; */
+
+/* static char normbgcolor[] = "#2E3440"; */
+/* static char normbordercolor[] = "#3B4252"; */
+/* static char normfgcolor[] = "#ECEFF4"; */
+/* static char selfgcolor[] = "#D8DEE9"; */
+/* static char selbordercolor[] = "#5E81AC"; */
+/* static char selbgcolor[] = "#5E81AC"; */
+/* static char termcol0[] = "#3b4252";  /1* black   *1/ */
+/* static char termcol1[] = "#bf616a";  /1* red     *1/ */
+/* static char termcol2[] = "#a3be8c";  /1* green   *1/ */
+/* static char termcol3[] = "#ebcb8b";  /1* yellow  *1/ */
+/* static char termcol4[] = "#81a1c1";  /1* blue    *1/ */
+/* static char termcol5[] = "#b48ead";  /1* magenta *1/ */
+/* static char termcol6[] = "#88c0d0";  /1* cyan    *1/ */
+/* static char termcol7[] = "#e5e9f0";  /1* white   *1/ */
+/* static char termcol8[] = "#4c566a";  /1* black   *1/ */
+/* static char termcol9[] = "#bf616a";  /1* red     *1/ */
+/* static char termcol10[] = "#a3be8c"; /1* green   *1/ */
+/* static char termcol11[] = "#ebcb8b"; /1* yellow  *1/ */
+/* static char termcol12[] = "#81a1c1"; /1* blue    *1/ */
+/* static char termcol13[] = "#b48ead"; /1* magenta *1/ */
+/* static char termcol14[] = "#8fbcbb"; /1* cyan    *1/ */
+/* static char termcol15[] = "#eceff4"; /1* white   *1/ */
+/* static char *termcolor[] = { */
+/*     termcol0,  termcol1,  termcol2,  termcol3,  termcol4,  termcol5, */
+/*     termcol6,  termcol7,  termcol8,  termcol9,  termcol10, termcol11, */
+/*     termcol12, termcol13, termcol14, termcol15, */
+/* }; */
+/* static char *colors[][3] = { */
+/*     //               fg           bg           border */
+/*     [SchemeNorm] = {normfgcolor, normbgcolor, normbordercolor}, */
+/*     [SchemeSel] = {selfgcolor, selbgcolor, selbordercolor}, */
+/*     [SchemeHid] = {selbgcolor, normbgcolor, selbordercolor}, */
+/* }; */
 
 
 /* tagging */
