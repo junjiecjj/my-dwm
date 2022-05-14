@@ -151,6 +151,7 @@ struct Monitor {
 	unsigned int sellt;
 	unsigned int tagset[2];
 	int showbar;
+  int enablegaps;
 	int topbar;
 	Client *clients;
 	Client *sel;

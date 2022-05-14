@@ -25,10 +25,12 @@ fcitx5 &
 
 dwmstatus 2>&1 >/dev/null &
 
-redshift &
+redshift-gtk &
 
 dunst  &
 
 copyq  &
+
+flameshot &
 
 numlockx on
