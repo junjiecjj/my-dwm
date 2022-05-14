@@ -27,5 +27,8 @@ dwmstatus 2>&1 >/dev/null &
 
 redshift &
 
+dunst  &
+
+copyq  &
 
 numlockx on
