@@ -134,6 +134,7 @@ static const unsigned int alphas[][3] = {
 // static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
 static const char *tags[] = { "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" };
 // static const char *tags[] = { "\uf120", "\uf7ae", "\uf121", "\uf04b", "\ue62e", "\uf251", "\ue727", "\uf537", "\uf684" };  [>图标对应的ASCLL码：https://www.nerdfonts.com/cheat-sheet<]
+/* static const char *tags[] = { "", "", "", "", "", "", "", "", "" }; */
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -188,6 +189,7 @@ static const Layout layouts[] = {
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define CMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -220,6 +222,7 @@ static const char *downVol[]        = {"/usr/bin/pactl", "set-sink-volume", "0",
 static const char *muteVol[]        = {"/usr/bin/pactl", "set-sink-mute", "0","toggle", NULL};
 static const char *upbrt[]          = {"light", "-A", "5", NULL};
 static const char *downbrt[]        = {"light", "-U", "5", NULL};
+static const char *windowswitchcmd[] = { "rofi", "-show", "window", NULL };
 
 static const char *volup[]          =          {"amixer", "-qM", "set", "Master", "2%+", "umute", NULL};
 static const char *voldown[]        =          {"amixer", "-qM", "set", "Master", "2%-", "umute", NULL}; //#定义系统音量大小调节的快捷键功能
@@ -256,6 +259,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,    XK_b,                    spawn,          {.v = wpcmd } },        //win+b换壁纸
     { MODKEY|ShiftMask,    XK_t,                    spawn,          {.v = trayercmd } },    // win+shift+t 呼出系统托盘
     { MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = sktogglecmd } },  //调出screenkey
+    { MODKEY|ShiftMask,     XK_v,           spawn,          CMD("VBoxManage startvm 'Windows10' --type gui") },
 
     //系统快捷键
     { 0,                            XK_Print,                   spawn,          {.v = screenshotcmd } },     //PrtSc 截图
@@ -287,6 +291,7 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,                   XK_Home,                    spawn,          SHCMD("transset-df -a .75") },      //恢复当前窗格应用的初始默认的透明度
 	//以下是增加的
 	// { MODKEY|ControlMask,             XK_l,                    spawn,          {.v = slimlockcmd } },     //锁屏
+    { Mod1Mask|ControlMask,             XK_Delete,                spawn,          CMD("betterlockscreen -l") },
 	{ MODKEY|Mod1Mask,                   XK_l,                    spawn,          SHCMD("slock") },             //锁屏
     { MODKEY|ControlMask,                XK_l,                    spawn,          {.v = slockcmd } },           //锁屏
     { MODKEY|ControlMask,                XK_x,                    spawn,          {.v = xscreensaverlockcmd } },//锁屏
@@ -312,6 +317,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_Return,               zoom,           {0} },      // win+shift+回车，窗口位置互换， 将当前窗口与主窗口互换，若是当前是主窗口则将其与上一个窗格互换，并聚焦在主窗格
 	{ MODKEY,              XK_Tab,                  view,           {0} },      // 在当前标签页上次聚焦的标签页之间切换
 	{ MODKEY,              XK_b,                    view,           {0} },      // 在当前标签页上次聚焦的标签页之间切换
+	{ MODKEY,              XK_o,                    spawn,          {.v = windowswitchcmd } },
 
 	{ MODKEY|Mod1Mask,     XK_0,                    setlayout,      {.v = &layouts[0]} },   // win+alt+0 平铺
 	{ MODKEY|Mod1Mask,     XK_1,                    setlayout,      {.v = &layouts[1]} },   // win+alt+1 浮动

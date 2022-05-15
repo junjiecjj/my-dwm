@@ -34,3 +34,9 @@ copyq  &
 flameshot &
 
 numlockx on
+
+xautolock -time 5 -locker '/usr/bin/betterlockscreen -l' -corners ---- -cornersize 30 &
+
+
+betterlockscreen -w dim
+
