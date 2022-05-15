@@ -210,7 +210,8 @@ static const char *sktogglecmd[]    =          {"/home/jack/tmp/my-dwm/scripts/s
 static const char scratchpadname[]  =          "scratchpad";
 static const char *scratchpadcmd[]  =          {"st", "-t", scratchpadname, "-g", "120x34", NULL};
 static const char *setcolemakcmd[]  =          {"/home/jack/tmp/my-dwm/scripts/setxmodmap-colemak.sh", NULL};
-static const char *setqwertycmd[]   =          {"/home/jack/tmp/my-dwm/setxmodmap-qwerty.sh", NULL};
+static const char *setqwertycmd[]   =          {"/home/jack/tmp/my-dwm/scripts/setxmodmap-qwerty.sh", NULL};
+static const char *touchpadcmd[]   =           {"/home/jack/tmp/my-dwm/scripts/touchpad.sh", NULL};
 //static const char *suspendcmd[]   =          {"/home/jack/tmp/my-dwm/scripts/suspend.sh", NULL};
 static const char *suspendcmd[]     =          {"systemctl","suspend", NULL};
 static const char *screenshotcmd[]  =          {"flameshot", "gui", NULL};
@@ -273,11 +274,13 @@ static Key keys[] = {
     { MODKEY|ShiftMask,                 XK_minus,                   spawn,          {.v = downvol } },        // win+shift+- 降低音量
     { MODKEY|ShiftMask,                 XK_equal,                   spawn,          {.v = upvol   } },        // win+shift+= 增加音量
     { MODKEY,                           XK_backslash,               spawn,          {.v = mutevol } },        // win+\ 静音
-    { MODKEY|ControlMask,              XK_Up,                       spawn,          {.v = volup} },        // Control+win+右方向键，调整音量大
-    { MODKEY|ControlMask,              XK_Down,                     spawn,          {.v = voldown} },      // Control+win+左方向键，调整音量小
+    { MODKEY|ControlMask,               XK_Up,                       spawn,          {.v = volup} },        // Control+win+右方向键，调整音量大
+    { MODKEY|ControlMask,               XK_Down,                     spawn,          {.v = voldown} },      // Control+win+左方向键，调整音量小
+    { MODKEY|ControlMask,               XK_m,                       spawn,          {.v = mute} },  	    // Shift+win+m，开启/关闭静音
+
     { MODKEY|ShiftMask,                XK_Up,                       spawn,          {.v = lightup} },      // Shift+win+上方向键，屏幕变亮
     { MODKEY|ShiftMask,                XK_Down,                     spawn,          {.v = lightdown} },    // Shift+win+下方向键，屏幕变暗
-    { MODKEY|ControlMask,               XK_m,                       spawn,          {.v = mute} },  	    // Shift+win+m，开启/关闭静音
+    { MODKEY|ControlMask,              XK_t,                        spawn,          {.v = touchpadcmd} },    // Control+win+t打开/关闭触控板
     /* XF86Keys */
     {MODKEY,                         XF86XK_AudioMute,             spawn,           {.v = muteVol}},
     {MODKEY,                         XF86XK_AudioLowerVolume,      spawn,           {.v = downVol}},
