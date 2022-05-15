@@ -35,10 +35,11 @@ flameshot &
 
 numlockx on
 
-bash ~/.fehbg
 
 xautolock -time 5 -locker '/usr/bin/betterlockscreen -l' -corners ---- -cornersize 30 &
 
-
 betterlockscreen -w dim
+
+bash ~/.fehbg
+
 
