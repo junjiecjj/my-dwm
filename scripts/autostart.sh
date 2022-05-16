@@ -56,7 +56,7 @@ bash ~/.fehbg
 # 状态栏
 # dwmblocks &
 
-sleep 4
+# sleep 4
 
 #状态栏
 killall slstatus
