@@ -216,6 +216,7 @@ static const char *touchpadcmd[]   =           {"/home/jack/tmp/my-dwm/scripts/t
 static const char *suspendcmd[]     =          {"systemctl","suspend", NULL};
 static const char *screenshotcmd[]  =          {"flameshot", "gui", NULL};
 static const char *scrotcmd[]       =          {"scrot", "-q", "100", "-s", "$HOME/图片/`date +%Y-%m-%d_%H:%M:%S`.png", NULL};
+static const char *deepinscreencmd[]     =     {"deepin-screenshot", NULL};
 static const char *slockcmd[]       =          { "slock", NULL };
 //以下是增加的
 static const char *upVol[]          = {"/usr/bin/pactl", "set-sink-volume", "0", "+3%", NULL};
@@ -267,7 +268,8 @@ static Key keys[] = {
     /* { MODKEY,                    XK_f,                       spawn,          {.v = screenshotcmd } },  //win+f  截图 */
     { MODKEY,                       XK_Print,                   spawn,          {.v = screenshotcmd } },     //win+print  截图
     { MODKEY|ShiftMask,             XK_Print,                   spawn,          {.v = scrotcmd } },          //win+print  截图
-	{ MODKEY|ControlMask,           XK_Print,                   spawn,          SHCMD("scrot -q 1 -s $HOME/图片/$(date +%Y-%m-%d_%H:%M:%S).png") },           //win+print  截图
+	/* { MODKEY|ControlMask,           XK_Print,                   spawn,          SHCMD("scrot -q 1 -s $HOME/图片/$(date +%Y-%m-%d_%H:%M:%S).png") },           //win+print  截图 */
+	{ MODKEY|ControlMask,           XK_Print,                   spawn,          {.v= deepinscreencmd} },           //win+print  截图
     { 0,                                XF86XK_AudioLowerVolume,    spawn,          {.v = downvol } },        //降低音量
     { 0,                                XF86XK_AudioMute,           spawn,          {.v = mutevol } },        //静音
     { 0,                                XF86XK_AudioRaiseVolume,    spawn,          {.v = upvol   } },        //增加音量
