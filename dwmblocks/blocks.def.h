@@ -7,10 +7,10 @@ static const Block blocks[] = {
         {" ",          "/home/jack/tmp/my-dwm/dwmblocks/scripts/memory.sh",           3,              0}, //内存占用率
         {"🔊",          "/home/jack/tmp/my-dwm/dwmblocks/scripts/volume.sh",           0,              11}, //音量
         {"ﯦ ",          "/home/jack/tmp/my-dwm/dwmblocks/scripts/backlight.sh",        0,              11}, //亮度
-        {"🔌🔋",        "/home/jack/tmp/my-dwm/dwmblocks/scripts/battery.sh",          2,              0}, //电量
+        {"🔌",        "/home/jack/tmp/my-dwm/dwmblocks/scripts/battery.sh",          2,              0}, //电量
         {"",           "/home/jack/tmp/my-dwm/dwmblocks/scripts/date.sh",             1,              0}, //时间
 };
 
-//sets delimeter between status commands. NULL character ('\0') means no delimeter.
+//🔋sets delimeter between status commands. NULL character ('\0') means no delimeter.
 static char delim[] = " | ";
 static int delimLen = 5;
