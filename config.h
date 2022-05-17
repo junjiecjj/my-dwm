@@ -229,10 +229,15 @@ static const char *mute[]           =          {"amixer", "-qM", "set", "Master"
 static const char *lightup[]        =          {"xbacklight", "-inc", "2", NULL};
 static const char *lightdown[]      =          {"xbacklight", "-dec", "2", NULL};					  //#定义屏幕亮度调节的快捷键功能
 
+
+
 //以下是增加的,控制音量和亮度3
 static const char *upVol[]          = {"/home/jack/tmp/my-dwm/scripts/up-vol.sh", NULL};
 static const char *downVol[]        = {"/home/jack/tmp/my-dwm/scripts/down-vol.sh",  NULL};
 static const char *muteVol[]        = {"/home/jack/tmp/my-dwm/scripts/toggle-vol.sh", NULL};
+/* static const char *upVol[]          = {"/usr/bin/pactl",  "set-sink-volume", "0", "+8%",  NULL}; */
+/* static const char *downVol[]        = {"/usr/bin/pactl",  "set-sink-volume", "0", "-8%",   NULL}; */
+/* static const char *muteVol[]        = {"/usr/bin/pactl",  "set-sink-volume", "0", "toggle", NULL}; */
 static const char *upbrt[]          = {"light", "-A", "5", NULL};
 static const char *downbrt[]        = {"light", "-U", "5", NULL};
 static const char *windowswitchcmd[] = { "rofi", "-show", "window", NULL };
@@ -297,9 +302,9 @@ static Key keys[] = {
     { MODKEY|ShiftMask,                XK_Down,                     spawn,          {.v = lightdown} },    // Shift+win+下方向键，屏幕变暗
 
     /* XF86Keys  控制音量和亮度3 */
-    {MODKEY,                         XF86XK_AudioMute,             spawn,           {.v = muteVol}},
-    {MODKEY,                         XF86XK_AudioLowerVolume,      spawn,           {.v = downVol}},
-    {MODKEY,                         XF86XK_AudioRaiseVolume,      spawn,           {.v = upVol}},
+    /* {MODKEY,                         XF86XK_AudioMute,             spawn,           {.v = muteVol}}, */
+    {MODKEY|ControlMask,             XK_minus,                     spawn,           {.v = downVol}},
+    {MODKEY|ControlMask,             XK_equal,                     spawn,           {.v = upVol}},
     {0,                              XF86XK_MonBrightnessUp,       spawn,           {.v = upbrt}},
     {0,                              XF86XK_MonBrightnessDown,     spawn,           {.v = downbrt}},
 
@@ -385,13 +390,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_l,                    viewtoright,      {0} },        // win+shift+l 将光标焦点移动到右边的标签页
 	{ MODKEY|ShiftMask,    XK_comma,                viewtoleft,       {0} },        // win+shift+, 将光标焦点移动到左边的标签页
 	{ MODKEY|ShiftMask,    XK_period,               viewtoright,      {0} },        // win+shift+. 将光标焦点移动到右边的标签页
+    { MODKEY,              XK_semicolon,            viewtoleft,     {0} },        // win+; 将光标焦点移动到左边的标签页
+	{ MODKEY,              XK_quoteright,           viewtoright,    {0} },        // win+' 将光标焦点移动到右边的标签页
 
 	{ MODKEY|ControlMask,    XK_comma,              tagtoleft,         {0} },        // win+shift+, 将当前窗口移动到左边的标签页,但是光标焦点仍然聚焦在当前标签页
 	{ MODKEY|ControlMask,    XK_period,             tagtoright,        {0} },        // win+shift+. 将当前窗口移动到右边的标签页,但是光标焦点仍然聚焦在当前标签页
-
-
-    { MODKEY,              XK_semicolon,            viewtoleft,     {0} },        // win+; 将光标焦点移动到左边的标签页
-	{ MODKEY,              XK_quoteright,           viewtoright,    {0} },        // win+' 将光标焦点移动到右边的标签页
 	{ MODKEY|ShiftMask,    XK_semicolon,            tagtoleft,      {0} },        // win+shift+; 将当前窗口移动到左边的标签页,但是光标焦点仍然聚焦在当前标签页
 	{ MODKEY|ShiftMask,    XK_quoteright,           tagtoright,     {0} },        // win+shift+' 将当前窗口移动到右边的标签页,但是光标焦点仍然聚焦在当前标签页
 

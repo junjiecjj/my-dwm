@@ -10,17 +10,17 @@
 
 
 /usr/bin/pactl  set-sink-volume   0   -8%
-/usr/bin/pactl  set-sink-volume   1   -8%
+# /usr/bin/pactl  set-sink-volume   1   -8%
 
 
 
 
 
 #cjj
-results=$(ps ax|grep -v grep|grep dwm-status-refresh)
+results=$(ps ax|grep -v grep|grep dwm-status)
 echo  $results
 if [ "${results}" == "" ];then
-    echo  "没有使用dwm-status-refresh"
+    echo  "没有使用dwm-status"
 else
     /bin/bash   ~/scripts/dwm-status-refresh.sh
 fi
