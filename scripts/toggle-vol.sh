@@ -1,11 +1,17 @@
-#!/bin/bash
+#! /usr/bin/env bash
+#########################################################################
+# File Name: toggle-vol.sh
+# Author:陈俊杰
+# mail: 2716705056@qq.com
+# Created Time: 2022年05月17日 星期二 16时19分34秒
 
-/usr/bin/amixer -qM set Master 8%- umute
-#pactl set-sink-volume @DEFAULT_SINK@ -5%
-# bash ~/scripts/dwm-status-refresh.sh
+# 此程序的功能是：
+#########################################################################
 
 
 
+
+/usr/bin/pactl  set-sink-mute 0 toggle
 
 
 
@@ -45,7 +51,6 @@ else
     status=$(slstatus -1)
     xsetroot -name "$status"
 fi
-
 
 
 

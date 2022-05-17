@@ -201,9 +201,6 @@ static const char *xtermcmd[]       =          {"xterm", NULL};
 static const char *typoracmd[]      =          {"typora", NULL};
 static const char *browsercmd[]     =          {"google-chrome-stable", NULL};
 static const char *trayercmd[]      =          {"/home/jack/tmp/my-dwm/scripts/trayer-toggle.sh", NULL};
-static const char *upvol[]          =          {"/home/jack/tmp/my-dwm/scripts/vol-up.sh", NULL};
-static const char *downvol[]        =          {"/home/jack/tmp/my-dwm/scripts/vol-down.sh", NULL};
-static const char *mutevol[]        =          {"/home/jack/tmp/my-dwm/scripts/vol-toggle.sh", NULL};
 static const char *wpcmd[]          =          {"/home/jack/tmp/my-dwm/scripts/wp-change.sh", NULL};
 /* static const char *wpcmd[] = {"feh", "--recursive", "--randomize", "--bg-fill", "~/图片/Wallpapers/", NULL}; */
 static const char *sktogglecmd[]    =          {"/home/jack/tmp/my-dwm/scripts/sck-tog.sh", NULL};
@@ -218,19 +215,29 @@ static const char *screenshotcmd[]  =          {"flameshot", "gui", NULL};
 static const char *scrotcmd[]       =          {"scrot", "-q", "100", "-s", "$HOME/图片/`date +%Y-%m-%d_%H:%M:%S`.png", NULL};
 static const char *deepinscreencmd[]     =     {"deepin-screenshot", NULL};
 static const char *slockcmd[]       =          { "slock", NULL };
-//以下是增加的
-static const char *upVol[]          = {"/usr/bin/pactl", "set-sink-volume", "0", "+3%", NULL};
-static const char *downVol[]        = {"/usr/bin/pactl", "set-sink-volume", "0", "-3%",  NULL};
-static const char *muteVol[]        = {"/usr/bin/pactl", "set-sink-mute", "0","toggle", NULL};
-static const char *upbrt[]          = {"light", "-A", "5", NULL};
-static const char *downbrt[]        = {"light", "-U", "5", NULL};
-static const char *windowswitchcmd[] = { "rofi", "-show", "window", NULL };
 
+
+//控制音量 1
+static const char *upvol[]          =          {"/home/jack/tmp/my-dwm/scripts/vol-up.sh", NULL};
+static const char *downvol[]        =          {"/home/jack/tmp/my-dwm/scripts/vol-down.sh", NULL};
+static const char *mutevol[]        =          {"/home/jack/tmp/my-dwm/scripts/vol-toggle.sh", NULL};
+
+//控制音量和亮度 2
 static const char *volup[]          =          {"amixer", "-qM", "set", "Master", "2%+", "umute", NULL};
 static const char *voldown[]        =          {"amixer", "-qM", "set", "Master", "2%-", "umute", NULL}; //#定义系统音量大小调节的快捷键功能
 static const char *mute[]           =          {"amixer", "-qM", "set", "Master", "toggle", NULL};			 //#定义开 / 关静音的快捷键功能
 static const char *lightup[]        =          {"xbacklight", "-inc", "2", NULL};
 static const char *lightdown[]      =          {"xbacklight", "-dec", "2", NULL};					  //#定义屏幕亮度调节的快捷键功能
+
+//以下是增加的,控制音量和亮度3
+static const char *upVol[]          = {"/home/jack/tmp/my-dwm/scripts/up-vol.sh", NULL};
+static const char *downVol[]        = {"/home/jack/tmp/my-dwm/scripts/down-vol.sh",  NULL};
+static const char *muteVol[]        = {"/home/jack/tmp/my-dwm/scripts/toggle-vol.sh", NULL};
+static const char *upbrt[]          = {"light", "-A", "5", NULL};
+static const char *downbrt[]        = {"light", "-U", "5", NULL};
+static const char *windowswitchcmd[] = { "rofi", "-show", "window", NULL };
+
+
 static const char *chromium[]       =          {"google-chrome-stable", "--disk-cache-dir=/tmp/google-chrome-stable", NULL}; //#定义chrome浏览器的快捷键功能
 static const char *dolphin[]        =          {"dolphin", NULL};	 	  //#定义dolphin文件管理器的快捷键功能
 static const char *nautilus[]       =          {"nautilus", NULL};	 	  //#定义dolphin文件管理器的快捷键功能
@@ -261,34 +268,41 @@ static Key keys[] = {
     { MODKEY|ShiftMask,    XK_b,                    spawn,          {.v = wpcmd } },        //win+b换壁纸
     { MODKEY|ShiftMask,    XK_t,                    spawn,          {.v = trayercmd } },    // win+shift+t 呼出系统托盘
     { MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = sktogglecmd } },  //调出screenkey
-    { MODKEY|ShiftMask,     XK_v,           spawn,          CMD("VBoxManage startvm 'Windows10' --type gui") },
+    { MODKEY|ShiftMask,    XK_v,                    spawn,          CMD("VBoxManage startvm 'Windows10' --type gui") },
 
     //系统快捷键
-    { 0,                            XK_Print,                   spawn,          {.v = screenshotcmd } },     //PrtSc 截图
+    { 0,                            XK_Print,                   spawn,          {.v = screenshotcmd } },     //PrtSc flameshot截图
     /* { MODKEY,                    XK_f,                       spawn,          {.v = screenshotcmd } },  //win+f  截图 */
-    { MODKEY,                       XK_Print,                   spawn,          {.v = screenshotcmd } },     //win+print  截图
+    { MODKEY,                       XK_Print,                   spawn,          {.v = screenshotcmd } },     //win+print flameshot 截图
     { MODKEY|ShiftMask,             XK_Print,                   spawn,          {.v = scrotcmd } },          //win+print  截图
 	/* { MODKEY|ControlMask,           XK_Print,                   spawn,          SHCMD("scrot -q 1 -s $HOME/图片/$(date +%Y-%m-%d_%H:%M:%S).png") },           //win+print  截图 */
-	{ MODKEY|ControlMask,           XK_Print,                   spawn,          {.v= deepinscreencmd} },           //win+print  截图
+	{ MODKEY|ControlMask,           XK_Print,                   spawn,          {.v= deepinscreencmd} },           //win+Control+print  deepin截图
+    { MODKEY|ControlMask,           XK_t,                       spawn,          {.v = touchpadcmd} },    // Control+win+t打开/关闭触控板
+
+
+    //控制音量 1
+    { 0,                                XF86XK_AudioRaiseVolume,    spawn,          {.v = upvol   } },        //增加音量
     { 0,                                XF86XK_AudioLowerVolume,    spawn,          {.v = downvol } },        //降低音量
     { 0,                                XF86XK_AudioMute,           spawn,          {.v = mutevol } },        //静音
-    { 0,                                XF86XK_AudioRaiseVolume,    spawn,          {.v = upvol   } },        //增加音量
-    { MODKEY|ShiftMask,                 XK_minus,                   spawn,          {.v = downvol } },        // win+shift+- 降低音量
     { MODKEY|ShiftMask,                 XK_equal,                   spawn,          {.v = upvol   } },        // win+shift+= 增加音量
+    { MODKEY|ShiftMask,                 XK_minus,                   spawn,          {.v = downvol } },        // win+shift+- 降低音量
     { MODKEY,                           XK_backslash,               spawn,          {.v = mutevol } },        // win+\ 静音
-    { MODKEY|ControlMask,               XK_Up,                       spawn,          {.v = volup} },        // Control+win+右方向键，调整音量大
-    { MODKEY|ControlMask,               XK_Down,                     spawn,          {.v = voldown} },      // Control+win+左方向键，调整音量小
-    { MODKEY|ControlMask,               XK_m,                       spawn,          {.v = mute} },  	    // Shift+win+m，开启/关闭静音
+
+    /* 控制音量和亮度2 */
+    { MODKEY|ControlMask,               XK_Up,                       spawn,          {.v = volup} },        // Control+win+上方向键，调整音量大
+    { MODKEY|ControlMask,               XK_Down,                     spawn,          {.v = voldown} },      // Control+win+下方向键，调整音量小
+    { MODKEY|ControlMask,               XK_m,                       spawn,           {.v = mute} },  	    // Shift+win+m，开启/关闭静音
 
     { MODKEY|ShiftMask,                XK_Up,                       spawn,          {.v = lightup} },      // Shift+win+上方向键，屏幕变亮
     { MODKEY|ShiftMask,                XK_Down,                     spawn,          {.v = lightdown} },    // Shift+win+下方向键，屏幕变暗
-    { MODKEY|ControlMask,              XK_t,                        spawn,          {.v = touchpadcmd} },    // Control+win+t打开/关闭触控板
-    /* XF86Keys */
+
+    /* XF86Keys  控制音量和亮度3 */
     {MODKEY,                         XF86XK_AudioMute,             spawn,           {.v = muteVol}},
     {MODKEY,                         XF86XK_AudioLowerVolume,      spawn,           {.v = downVol}},
     {MODKEY,                         XF86XK_AudioRaiseVolume,      spawn,           {.v = upVol}},
     {0,                              XF86XK_MonBrightnessUp,       spawn,           {.v = upbrt}},
     {0,                              XF86XK_MonBrightnessDown,     spawn,           {.v = downbrt}},
+
     //{ MODKEY|ShiftMask|ControlMask,       XK_q,           spawn,          {.v = setqwertycmd } },  //win+shift+ctrl+q 键盘模式为qwerty
     //{ MODKEY|ShiftMask|ControlMask,       XK_c,           spawn,          {.v = setcolemakcmd } }, //win+shift+ctrl+c 键盘模式为colemal
 	{ MODKEY|Mod1Mask,                   XK_Down,                    spawn,          SHCMD("transset-df -a --dec .1") },  //减少当前窗格应用的透明度

@@ -1,10 +1,16 @@
-#!/bin/bash
+#! /usr/bin/env bash
+#########################################################################
+# File Name: up-vol.sh
+# Author:陈俊杰
+# mail: 2716705056@qq.com
+# Created Time: 2022年05月17日 星期二 16时12分18秒
 
-/usr/bin/amixer -qM set Master 8%- umute
-#pactl set-sink-volume @DEFAULT_SINK@ -5%
-# bash ~/scripts/dwm-status-refresh.sh
+# 此程序的功能是：
+#########################################################################
 
 
+/usr/bin/pactl  set-sink-volume   0   -8%
+/usr/bin/pactl  set-sink-volume   1   -8%
 
 
 
@@ -45,7 +51,6 @@ else
     status=$(slstatus -1)
     xsetroot -name "$status"
 fi
-
 
 
 
