@@ -44,6 +44,15 @@ flameshot &
 numlockx on
 
 
+
+#音频相关的托盘
+pasystray  &
+kmix &
+pa-applet  &
+
+#轻量级系统托盘应用程序，可让您使用 PulseAudio 控制麦克风状态和音量。
+mictray  &
+
 xautolock -time 5 -locker '/usr/bin/betterlockscreen -l' -corners ---- -cornersize 30 &
 
 betterlockscreen -w dim
