@@ -10,17 +10,17 @@
 
 
 
-
-/usr/bin/pactl  set-sink-mute 0 toggle
+pactl set-sink-mute @DEFAULT_SINK@ toggle
+# /usr/bin/pactl  set-sink-mute 0 toggle
 
 
 
 
 #cjj
-results=$(ps ax|grep -v grep|grep dwm-status-refresh)
+results=$(ps ax|grep -v grep|grep dwm-status)
 echo  $results
 if [ "${results}" == "" ];then
-    echo  "没有使用dwm-status-refresh"
+    echo  "没有使用dwm-status-refresh"  >/dev/null
 else
     /bin/bash   ~/scripts/dwm-status-refresh.sh
 fi
@@ -31,7 +31,7 @@ results=$(ps ax|grep -v grep|grep dwmblocks)
 echo -e ${results}
 
 if [ "${results}" == "" ];then
-    echo  "没有使用dwmblocks"
+    echo  "没有使用dwmblocks"  >/dev/null
 else
     # echo  "正在使用dwmblocks"
     killall dwmblocks
@@ -42,7 +42,7 @@ fi
 
 results=$(ps ax|grep -v grep|grep slstatus)
 if [ "${results}"  == "" ];then
-    echo  "没有使用slstatus"
+    echo  "没有使用slstatus"  >/dev/null
 else
     # echo  "正在使用slstatus"
     # killall slstatus

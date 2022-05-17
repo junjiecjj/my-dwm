@@ -1,20 +1,31 @@
 #!/bin/bash
 
-/usr/bin/amixer -qM set Master 8%- umute
+
+# TheCW
+# /usr/bin/amixer -qM set Master 8%- umute
 #pactl set-sink-volume @DEFAULT_SINK@ -5%
 # bash ~/scripts/dwm-status-refresh.sh
 
 
+#这行是判断当前是否为静音，返回[on]:非静音，[off]静音
+CURRENT_STATE=`amixer get Master | egrep 'Playback.*?\[o' | egrep -o '\[o.+\]'`
 
+if [[ $CURRENT_STATE == '[on]' ]]; then
+    /usr/bin/amixer -qM set Master 8%- umute
+else
+    #首先非静音
+    /usr/bin/amixer -D pulse set Master 1+ toggle
+    /usr/bin/amixer -qM set Master 8%- umute
+fi
 
 
 
 
 #cjj
-results=$(ps ax|grep -v grep|grep dwm-status-refresh)
+results=$(ps ax|grep -v grep|grep dwm-status)
 echo  $results
 if [ "${results}" == "" ];then
-    echo  "没有使用dwm-status-refresh"
+    echo  "没有使用dwm-status"  >/dev/null
 else
     /bin/bash   ~/scripts/dwm-status-refresh.sh
 fi
@@ -25,7 +36,7 @@ results=$(ps ax|grep -v grep|grep dwmblocks)
 echo -e ${results}
 
 if [ "${results}" == "" ];then
-    echo  "没有使用dwmblocks"
+    echo  "没有使用dwmblocks"  >/dev/null
 else
     # echo  "正在使用dwmblocks"
     killall dwmblocks
@@ -36,7 +47,7 @@ fi
 
 results=$(ps ax|grep -v grep|grep slstatus)
 if [ "${results}"  == "" ];then
-    echo  "没有使用slstatus"
+    echo  "没有使用slstatus"  >/dev/null
 else
     # echo  "正在使用slstatus"
     # killall slstatus

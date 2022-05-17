@@ -152,7 +152,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.6; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.52; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
@@ -291,7 +291,8 @@ static Key keys[] = {
     { 0,                                XF86XK_AudioMute,           spawn,          {.v = mutevol } },        //静音
     { MODKEY|ShiftMask,                 XK_equal,                   spawn,          {.v = upvol   } },        // win+shift+= 增加音量
     { MODKEY|ShiftMask,                 XK_minus,                   spawn,          {.v = downvol } },        // win+shift+- 降低音量
-    { MODKEY,                           XK_backslash,               spawn,          {.v = mutevol } },        // win+\ 静音
+    { MODKEY|ShiftMask,                 XK_BackSpace,               spawn,          {.v = mutevol } },        // win+shift+Backspace 静音
+    /* { MODKEY,                           XK_backslash,               spawn,          {.v = mutevol } },        // win+\ 静音 */
 
     /* 控制音量和亮度2 */
     { MODKEY|ControlMask,               XK_Up,                       spawn,          {.v = volup} },        // Control+win+上方向键，调整音量大
@@ -302,7 +303,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,                XK_Down,                     spawn,          {.v = lightdown} },    // Shift+win+下方向键，屏幕变暗
 
     /* XF86Keys  控制音量和亮度3 */
-    /* {MODKEY,                         XF86XK_AudioMute,             spawn,           {.v = muteVol}}, */
+    {MODKEY|ControlMask,             XK_BackSpace,                 spawn,           {.v = muteVol}},
     {MODKEY|ControlMask,             XK_minus,                     spawn,           {.v = downVol}},
     {MODKEY|ControlMask,             XK_equal,                     spawn,           {.v = upVol}},
     {0,                              XF86XK_MonBrightnessUp,       spawn,           {.v = upbrt}},
