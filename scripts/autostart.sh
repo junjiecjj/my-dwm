@@ -1,28 +1,8 @@
 #!/bin/bash
 
-#笔记本，三个显示器，一个原屏幕，两个外界，下面三行：关闭原屏幕，只用两个外界显示器
-# xrandr --output DP-1-8 --primary
-# xrandr --output DP-1-8 --auto --output eDP-1 --off
-# xrandr --output DP-1-9  --right-of DP-1-8  --auto
 
-
-
-# 如果为笔记本外接两个显示器，关闭笔记本的显示器
-# xrandr --output DP-1-8 --mode 1920x1080 --primary
-#  xrandr --output DP-1-9 --mode 1920x1080  --right-of DP-1-8  --auto
-#  xrandr  --output eDP-1 --off
-
-
-# 如果为笔记本外接1个显示器
-# xrandr --output eDP-1 --mode 1920x1080 --primary
-# xrandr --output HDMI1 1920*1080 --right-of eDP1
-
-
-
-# 如果为台式机外接2个显示器
-#  xrandr --output HDM-1 --mode 1920x1080 --primary
-#  xrandr --output HDMI-2  1920*1080 --right-of HDM-1
-
+#多显示器设置
+/bin/bash  ./dualmon.sh  &
 
 
 # 状态栏

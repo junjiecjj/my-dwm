@@ -89,9 +89,9 @@ static const struct arg args[] = {
 	{ wifi_perc,      "-%s%% ",           wk  },
     // 因为 C 语言里单引号内的是字符常量，双引号内的是字符串常量，两者不一样。
     { separator,      "|",                 NULL },
-    { battery_perc,    "🔋:%s%% ",        "BAT0" },
-    // 在 C 语言里 "%" 需要转义，用 "%%" 来表示
-    { battery_state,   "🔌:%s",          "BAT0" },
+    { battery_perc,    "🔌:%s%% ",        "BAT0" },
+    // 在 C 语言里 "%" 需要转义，用 "%%" 来表示💻🔋🔌🕑 
+    /* { battery_state,   "🔌:%s",          "BAT0" }, */
     { separator,      "|",               NULL },
     { disk_free,       "⛁/:%s",            "/" },
     { disk_total,      "/%s",              "/" },
@@ -99,7 +99,7 @@ static const struct arg args[] = {
     /* { disk_total,      "/%s]",              "/home" }, */
 	/* { disk_perc,      "[HD %s%%]",       "/"  }, */
     { separator,      "|",               NULL },
-    { ram_used,        ":%s",          NULL },
+    { ram_used,        "💻:%s",          NULL },
     { ram_total,       "/%s",               NULL },
     /* { swap_used,       ":%s",         NULL }, */
     /* { swap_total,      "/%s",             NULL }, */
@@ -109,6 +109,6 @@ static const struct arg args[] = {
     { separator,       "|",                NULL },
     /* { vol_perc,        "🔊 %s",         "/dev/mixer" }, */
     /* { separator,       "|",              NULL }, */
-    { datetime,        " %s",            "%Y-%m-%d/%u %H:%M:%S" },
+    { datetime,        "🕑%s",            "%Y-%m-%d/%u %H:%M:%S" },
 
 };
