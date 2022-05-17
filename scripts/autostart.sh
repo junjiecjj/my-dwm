@@ -44,14 +44,17 @@ flameshot &
 numlockx on
 
 
-
 #音频相关的托盘
+# 系统托盘图标：pasystray
 pasystray  &
+# KMix — KDE 音量控制应用程序支持多个平台，包括 PulseAudio、可配置的系统托盘小程序。
 kmix &
-pa-applet  &
-
-#轻量级系统托盘应用程序，可让您使用 PulseAudio 控制麦克风状态和音量。
+# pa-applet — 带有音量条的 PulseAudio 系统托盘小程序。
+/foo/bar/bin/pa-applet  &
+#轻量级系统托盘应用程序，可让您使用 PulseAudio 控制麦克风状态和音量,上下滚轮调节输入音大小。
 mictray  &
+
+
 
 xautolock -time 5 -locker '/usr/bin/betterlockscreen -l' -corners ---- -cornersize 30 &
 
