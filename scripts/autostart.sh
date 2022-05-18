@@ -8,7 +8,11 @@
 # 状态栏
 # /bin/bash ./dwm-status.sh &
 
-/bin/bash ./wp-autochange.sh &
+#自动更换壁纸
+# /bin/bash ./wp-autochange.sh &
+
+#固定壁纸
+/bin/bash  ./wp-change.sh
 
 #picom -o 0.95 -i 0.88 --detect-rounded-corners --vsync --blur-background-fixed -f -D 5 -c  --experimental-backends  -b
 picom   --experimental-backends -b
@@ -29,16 +33,23 @@ xfce4-volumed-pulse &
 
 ./autostart_wait.sh &
 
+
+#输入法
 fcitx &
 
 fcitx5 &
 
-redshift-gtk &
 
+redshift   &
+# redshift-gtk &
+
+#通知
 dunst  &
 
+#剪切板
 copyq  &
 
+#截图工具
 flameshot &
 
 numlockx on
@@ -55,7 +66,7 @@ kmix &
 mictray  &
 
 
-
+# betterlockscreen锁屏
 xautolock -time 5 -locker '/usr/bin/betterlockscreen -l' -corners ---- -cornersize 30 &
 
 betterlockscreen -w dim
