@@ -3,4 +3,3 @@
 feh --recursive --randomize --bg-fill ~/图片/Wallpapers/
 #feh --recursive --randomize --bg-fill ~/Pictures/wallpapers/view
 
-sleep 3600s
