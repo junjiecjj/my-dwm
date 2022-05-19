@@ -37,7 +37,7 @@ xfce4-volumed-pulse &
 #输入法
 fcitx &
 
-fcitx5 &
+# fcitx5 &
 
 
 # redshift   &
