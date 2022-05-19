@@ -350,8 +350,8 @@ sudo apt-get install libcairo2-dev
 
 sudo apt-get install libpango1.0-dev
 
-
-
+# Viewnior是一个图像查看器应用程序，它被创建为简单，快速且优雅。
+sudo apt install viewnior
 
 #PDF阅读zathura, 文件管理器pcmanfm,thunar
 sudo apt install zathura  pcmanfm  thunar
@@ -434,7 +434,7 @@ sudo apt-get install mpd mpc
 ## rofi 是一个快捷的程序启动器
 sudo  apt install -y rofi 
 
-nm-applet
+sudo apt install nm-applet
 network-manager-applet 是一个GTK3+前端小程序，工作在Xorg环境下，带有一个系统托盘。
 
 ## 背景图片设置工具
@@ -443,6 +443,9 @@ sudo  apt install  variety
 exec_always variety -b
 #variety设置壁纸时候，普通用户必须有权限
 #简单点，直接把壁纸 所有权限设成 777
+
+
+
 
 
 ```

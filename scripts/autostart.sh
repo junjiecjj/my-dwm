@@ -40,8 +40,8 @@ fcitx &
 fcitx5 &
 
 
-redshift   &
-# redshift-gtk &
+# redshift   &
+nohup   redshift-gtk  >  /dev/null  2>&1  &
 
 #通知
 dunst  &

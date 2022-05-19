@@ -183,8 +183,8 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 // win+num(1-9)查看指定的标签页,,win+0，全部标签页一起查看
-// win+Contrl+num将当前标签页与指定的标签页一起查看，但是当再次切换标签页时此标签页又复原,win+control+0无效
-// win + shift + num,移动当前窗口至指定的桌面标签,并聚焦于指定标签的桌面，
+// win+Contrl+num(1-9)将当前标签页与指定的标签页一起查看，但是当再次切换标签页时此标签页又复原,,win+control+0无效
+// win + shift + num,移动当前窗口至指定的桌面标签,并聚焦于指定标签的桌面， win+shift+0将当前窗口移动到所有标签页,再做一次win+shift+1-9可以取消这一操作
 // win_shift+control+num,将当前窗口复制一份到指定标签桌面，但仍然聚焦在当前标签页,如果此时再按win+ctrl+num则复制的窗口不会重复显示,再重复一次相同的W+S+C+num,复制取消;
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
@@ -208,13 +208,18 @@ static const char scratchpadname[]  =          "scratchpad";
 static const char *scratchpadcmd[]  =          {"st", "-t", scratchpadname, "-g", "120x34", NULL};
 static const char *setcolemakcmd[]  =          {"/home/jack/tmp/my-dwm/scripts/setxmodmap-colemak.sh", NULL};
 static const char *setqwertycmd[]   =          {"/home/jack/tmp/my-dwm/scripts/setxmodmap-qwerty.sh", NULL};
-static const char *touchpadcmd[]   =           {"/home/jack/tmp/my-dwm/scripts/touchpad.sh", NULL};
+static const char *touchpadcmd[]   =           {"/home/jack/tmp/my-dwm/scripts/touchpad.sh", NULL};  //触控板
 //static const char *suspendcmd[]   =          {"/home/jack/tmp/my-dwm/scripts/suspend.sh", NULL};
 static const char *suspendcmd[]     =          {"systemctl","suspend", NULL};
-static const char *screenshotcmd[]  =          {"flameshot", "gui", NULL};
-static const char *scrotcmd[]       =          {"scrot", "-q", "100", "-s", "$HOME/图片/`date +%Y-%m-%d_%H:%M:%S`.png", NULL};
-static const char *deepinscreencmd[]     =     {"deepin-screenshot", NULL};
-static const char *slockcmd[]       =          { "slock", NULL };
+
+//===截图=====
+static const char *deepinscreencmd[]          =    {"deepin-screenshot", NULL};
+/* static const char *screenshotcmd[]            =    {"flameshot", "gui", NULL}; */
+static const char *flameshot_choicecmd[]      =    {"/home/jack/tmp/my-dwm/scripts/flameshot_choice.sh", NULL};
+static const char *flameshot_fullcmd[]        =    {"/home/jack/tmp/my-dwm/scripts/flameshot_full.sh",   NULL};
+static const char *scrotcmd[]                 =    {"/home/jack/tmp/my-dwm/scripts/scrot.sh",            NULL};
+static const char *scrot_choicecmd[]          =    {"/home/jack/tmp/my-dwm/scripts/scrot_choice.sh",     NULL};
+static const char *scrot_copycmd[]            =    {"/home/jack/tmp/my-dwm/scripts/scrot_copy.sh",       NULL};
 
 
 //控制音量 1
@@ -247,8 +252,8 @@ static const char *chromium[]       =          {"google-chrome-stable", "--disk-
 static const char *dolphin[]        =          {"dolphin", NULL};	 	  //#定义dolphin文件管理器的快捷键功能
 static const char *nautilus[]       =          {"nautilus", NULL};	 	  //#定义dolphin文件管理器的快捷键功能
 static const char *slimlockcmd[]    =          {"slimlock", NULL };
-static const char *slocklockcmd[]   =          {"slock", NULL };
 static const char *xscreensaverlockcmd[]  =    {"xscreensaver", NULL };
+static const char *slockcmd[]       =          { "slock", NULL };
 
 
 /*
@@ -276,12 +281,17 @@ static Key keys[] = {
     { MODKEY|ShiftMask,    XK_v,                    spawn,          CMD("VBoxManage startvm 'Windows10' --type gui") },
 
     //系统快捷键
-    { 0,                            XK_Print,                   spawn,          {.v = screenshotcmd } },     //PrtSc flameshot截图
-    /* { MODKEY,                    XK_f,                       spawn,          {.v = screenshotcmd } },  //win+f  截图 */
-    { MODKEY,                       XK_Print,                   spawn,          {.v = screenshotcmd } },     //win+print flameshot 截图
-    { MODKEY|ShiftMask,             XK_Print,                   spawn,          {.v = scrotcmd } },          //win+print  截图
-	/* { MODKEY|ControlMask,           XK_Print,                   spawn,          SHCMD("scrot -q 1 -s $HOME/图片/$(date +%Y-%m-%d_%H:%M:%S).png") },           //win+print  截图 */
-	{ MODKEY|ControlMask,           XK_Print,                   spawn,          {.v= deepinscreencmd} },           //win+Control+print  deepin截图
+    //========截图======================
+	{ MODKEY|ShiftMask,             XK_Print,                   spawn,          {.v= deepinscreencmd} },           //win+Control+print  deepin截图
+    { ShiftMask,                    XK_Print,                   spawn,          {.v= flameshot_choicecmd} },
+    { ControlMask,                  XK_Print,                   spawn,          {.v= flameshot_fullcmd} },
+
+    { 0,                            XK_Scroll_Lock,             spawn,          {.v = scrotcmd } },          //win+print  截图
+    { 0,                            XK_Print,                   spawn,          {.v= scrot_copycmd} },
+    { MODKEY,                       XK_Print,                   spawn,          {.v= scrot_choicecmd} },
+
+
+    //======打开/关闭触控板
     { MODKEY|ControlMask,           XK_t,                       spawn,          {.v = touchpadcmd} },    // Control+win+t打开/关闭触控板
 
 
@@ -316,8 +326,8 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,                   XK_Home,                    spawn,          SHCMD("transset-df -a .75") },      //恢复当前窗格应用的初始默认的透明度
 	//以下是增加的
 	// { MODKEY|ControlMask,             XK_l,                    spawn,          {.v = slimlockcmd } },     //锁屏
-    { Mod1Mask|ControlMask,             XK_Delete,                spawn,          CMD("betterlockscreen -l") },
-	{ MODKEY|Mod1Mask,                   XK_l,                    spawn,          SHCMD("slock") },             //锁屏
+    { MODKEY|ControlMask,                XK_Delete,               spawn,          CMD("betterlockscreen -l") },
+	/* { MODKEY|Mod1Mask,                   XK_l,                    spawn,          SHCMD("slock") },             //锁屏 */
     { MODKEY|ControlMask,                XK_l,                    spawn,          {.v = slockcmd } },           //锁屏
     { MODKEY|ControlMask,                XK_x,                    spawn,          {.v = xscreensaverlockcmd } },//锁屏
 
