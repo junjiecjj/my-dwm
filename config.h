@@ -132,9 +132,11 @@ static const unsigned int alphas[][3] = {
 /* tagging */
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 // static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
-static const char *tags[] = { "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" };
+/* static const char *tags[] = { "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" }; */
 // static const char *tags[] = { "\uf120", "\uf7ae", "\uf121", "\uf04b", "\ue62e", "\uf251", "\ue727", "\uf537", "\uf684" };  [>图标对应的ASCLL码：https://www.nerdfonts.com/cheat-sheet<]
 /* static const char *tags[] = { "", "", "", "", "", "", "", "", "" }; */
+static const char *tags[] = { "Browser", "Code", "Term", "File", "Chat", "Video", "Music", "Graphic", "Game" };
+
 
 static const Rule rules[] = {
 	/* xprop(1):
