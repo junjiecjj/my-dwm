@@ -6,3 +6,6 @@ if [ "$result" == "" ]; then
 else
   eval "killall screenkey"
 fi
+
+
+exec notify-send "Screenkey关闭/开启."

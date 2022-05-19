@@ -59,5 +59,5 @@ fi
 
 
 
-
+exec notify-send 'amixer增大音量成功'
 

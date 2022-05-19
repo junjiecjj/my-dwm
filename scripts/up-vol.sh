@@ -68,4 +68,4 @@ else
 fi
 
 
-
+exec notify-send 'pactl增大音量成功'

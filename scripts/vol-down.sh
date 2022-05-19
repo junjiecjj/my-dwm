@@ -60,3 +60,4 @@ fi
 
 
 
+exec notify-send 'amixer降低音量成功'

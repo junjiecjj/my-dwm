@@ -4,3 +4,6 @@ setxkbmap us colemak -option -option caps:swapescape -option ctrl:swap_lalt_lctl
 #xmodmap ~/.config/.Xmodmap
 xset r rate 250 30
 
+
+
+exec notify-send  "设置键盘映射模式为colemak..."

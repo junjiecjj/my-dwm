@@ -53,4 +53,4 @@ else
 fi
 
 
-
+exec notify-send 'pactl静音成功'

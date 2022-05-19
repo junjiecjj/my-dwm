@@ -51,4 +51,5 @@ fi
 
 
 
+exec notify-send 'amixer静音/非静音成功切换'
 

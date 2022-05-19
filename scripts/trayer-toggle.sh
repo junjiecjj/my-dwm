@@ -13,3 +13,4 @@ fi
 
 
 
+exec notify-send 'Trayer系统托盘开启/关闭'

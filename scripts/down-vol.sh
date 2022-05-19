@@ -70,4 +70,4 @@ else
 fi
 
 
-
+exec notify-send 'pactl降低音量成功'
