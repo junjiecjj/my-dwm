@@ -14,15 +14,15 @@ i3wm、DWM、Awesome、Xmond、Bspwm等都是Linux系统上的平铺式窗口管
 
 
 
-
+请看[DWM](https://github.com/junjiecjj/my-dwm)
 
 请看[I3WM](https://github.com/junjiecjj/i3)
 
-请看[Xmoad]()
+请看[Xmoad]()  ,待续
 
-请看[Awesome]()
+请看[Awesome]() ,待续
 
-请看[BspWM]()
+请看[BspWM]() ,待续
 
 
 
