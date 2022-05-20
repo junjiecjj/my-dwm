@@ -36,11 +36,12 @@ static const char *fonts[]          = { "CaskaydiaCove Nerd Font Mono:style=Semi
 // static const char *fonts[]          = { "CaskaydiaCove Nerd Font Mono:style=ExtraLight:size=12" };
 // static const char *fonts[]          = { "SauceCodePro Nerd Font:size=12" };
 // static const char *fonts[]          = { "SauceCodePro Nerd Font Mono:size=12" };
+// static const char *fonts[]          = { "WenQuanYi Micro Hei:style=Regular:size=12" };
 
 // static const char dmenufont[]       = "JetBrains Nerd Font Mono:size=12";
 // static const char dmenufont[]       = "SauceCodePro Nerd Font Mono:size=12";
-static const char dmenufont[]        = "CaskaydiaCove Nerd Font Mono:style=SemiLight:size=12";
-
+static const char dmenufont[]          = "CaskaydiaCove Nerd Font Mono:style=SemiLight:size=12";
+/* static const char dmenufont[]          = "WenQuanYi Micro Hei:style=Regular:size=12" */
 
 //配色1
 /* static const unsigned int baralpha = 0xd0; */
