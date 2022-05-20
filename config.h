@@ -129,26 +129,33 @@ static const unsigned int alphas[][3] = {
 /* }; */
 
 
- /* volum: f028 墳fa7d f2a0 */
- /* weather:  朗  歹 */
- /* wifi: f1eb 直faa8 */
- /* terminal:e795 f120 f489 */
- /* file:f482 f413 */
- /* chat:f1d7 */
- /* video: f03d ﱘf001   ﱘf001   﫽fafd */
- /* picture: f1c5 f03e */
- /* game:  */
- /* windows: e70f f17a fab2 🐧 */
- /* laptop: \uf109  \uf821 \uf822 f823 f824 */
- /* browser:e  */
- /* code: f40d  f121   f1c9 */
+
+/* # volum: f028 墳fa7d f2a0 🔊 */
+/* # weather:  朗  歹 */
+/* # wifi: f1eb 直faa8 */
+/* # terminal: e795 f120 f489 */
+/* # file:f482 f413 */
+/* # chat:f1d7 */
+/* # video: f03d ﱘf001   ﱘf001   﫽fafd */
+/* # picture: f1c5 f03e   */
+/* # game:  */
+/* # windows: e70f f17a fab2 🐧e62a */
+/* # laptop: \uf109  \uf821 \uf822 f823 f824  💻   */
+/* # battery: f240  f583  f60b */
+/* # browser:e    f269  e745 */
+/* # code: f40d  f121   f1c9 */
+/* # down: f103    f175  e340 e353  f547 f175  f176  ﯁fbc1   f062 */
+/* # CPU：f2db  e266 */
+
 /* tagging */
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 // static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
 /* static const char *tags[] = { "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" }; */
 // static const char *tags[] = { "\uf120", "\uf7ae", "\uf121", "\uf04b", "\ue62e", "\uf251", "\ue727", "\uf537", "\uf684" };  [>图标对应的ASCLL码：https://www.nerdfonts.com/cheat-sheet<]
 /* static const char *tags[] = { "", "", "", "", "", "", "", "", "" }; */
-static const char *tags[] = { "Browser", "Code", "Term", "File", "Chat", "Video", "Music", "Graphic", "Game" };
+static const char *tags[] = { "Browser", "Code", "Term", "File", "Chat", "Video", "Music", "Graphic", "Game" };
+/* static const char *tags[] = { "\uf17aBrowser", "\uf40dCode", "\uf489Term", "\uf413File", "\uf1d7Chat", "Video", "Music", "\uf1c5Graphic", "\uf11bGame" }; */
+/* static const char *tags[] = { "Browser", "Code", "Term", "File", "Chat", "Video", "Music", "Graphic", "Game" }; */
 
 
 static const Rule rules[] = {
