@@ -350,6 +350,9 @@ sudo apt-get install libcairo2-dev
 
 sudo apt-get install libpango1.0-dev
 
+# 多显示器需要使用配置工具，我用的是 xrandr。其他工具还有 Xinerama 和 winView，另外 arandr 是 xrandr 的图形界面，也可以用。
+sudo apt install  arandr  x11-xserver-utils
+
 # Viewnior是一个图像查看器应用程序，它被创建为简单，快速且优雅。
 sudo apt install viewnior
 
@@ -443,9 +446,6 @@ sudo  apt install  variety
 exec_always variety -b
 #variety设置壁纸时候，普通用户必须有权限
 #简单点，直接把壁纸 所有权限设成 777
-
-
-
 
 
 ```
