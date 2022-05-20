@@ -21,8 +21,13 @@ static const Bool viewontag                 = True;     /* Switch view on tag sw
 // static const char *fonts[]          = { "Fira Code:size=12" };
 // static const char *fonts[]          = { "FiraCode Nerd Font:size=12" };
 // static const char *fonts[]          = { "FiraCode Nerd Font Mono:size=12" };
-// static const char *fonts[]          = { "JetBrainsMono Nerd Font Mono:size=12" };
 // static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=12" };
+// static const char *fonts[]          = { "JetBrainsMono Nerd Font Mono:size=12" };
+// static const char *fonts[]          = { "JetBrainsMono Nerd Font Mono:style=Bold:size=12" };
+// static const char *fonts[]          = { "JetBrainsMono Nerd Font Mono:style=Regular:size=12" };
+// static const char *fonts[]          = { "JetBrainsMono Nerd Font Mono:style=ExtraLight:size=12" };
+// static const char *fonts[]          = { "JetBrainsMono Nerd Font Mono:style=Light:size=12" };
+
 // static const char *fonts[]          = { "YaHei Consolas Hybrid:size=12" };
 // static const char *fonts[]          = { "Cascadia Code SemiLight:size=12" };
 // static const char *fonts[]          = { "Cascadia Code ExtraLight:size=12" };
