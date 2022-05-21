@@ -23,7 +23,14 @@ picom   --experimental-backends -b
 
 # /bin/bash ~/scripts/setxmodmap-colemak.sh &
 
+
+#网络管理系统托盘
 nm-applet &
+
+
+#蓝牙系统托盘
+# 若bluetooth.service没有启动，则启动它:sudo systemctl start bluetooth.service
+blueman-applet  &
 
 xfce4-power-manager &
 
