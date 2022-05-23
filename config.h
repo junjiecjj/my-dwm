@@ -359,9 +359,10 @@ static Key keys[] = {
     { MODKEY|ControlMask,                XK_l,                    spawn,          {.v = slockcmd } },           //锁屏
     { MODKEY|ControlMask,                XK_x,                    spawn,          {.v = xscreensaverlockcmd } },//锁屏
 
-    { MODKEY|ControlMask,  XK_s,                    spawn,          {.v = suspendcmd } },  // win+ctrl+s休眠
-    { MODKEY|ShiftMask,    XK_q,                    killclient,     {0} },                  //关闭当前窗口，强制关闭窗口。最后参数NULL
-	{ MODKEY|ControlMask,  XK_Escape,               quit,           {0} },                  //Ctrl+Alt+del，关闭并退出整个dwm桌面，且强制关闭所有当前运行于dwm下的程序
+    { MODKEY|ControlMask,                XK_s,                    spawn,          {.v = suspendcmd } },  // win+ctrl+s休眠
+    { MODKEY|ControlMask,                XK_k,                    spawn,          CMD("xkill") },
+    { MODKEY|ShiftMask,                  XK_q,                    killclient,     {0} },                  //关闭当前窗口，强制关闭窗口。最后参数NULL
+	{ MODKEY|ControlMask,                XK_Escape,               quit,           {0} },                  //Ctrl+Alt+del，关闭并退出整个dwm桌面，且强制关闭所有当前运行于dwm下的程序
 
 
     //窗口快捷键
