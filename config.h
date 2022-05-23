@@ -381,7 +381,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_Return,               zoom,           {0} },      // win+shift+回车，窗口位置互换， 将当前窗口与主窗口互换，若是当前是主窗口则将其与上一个窗格互换，并聚焦在主窗格
 	{ MODKEY,              XK_Tab,                  view,           {0} },      // 在当前标签页上次聚焦的标签页之间切换
 	{ MODKEY,              XK_b,                    view,           {0} },      // 在当前标签页上次聚焦的标签页之间切换
-	{ MODKEY,              XK_p,                    spawn,          {.v = windowswitchcmd } },
+	{ MODKEY,              XK_p,                    spawn,          {.v = windowswitchcmd } },  //利用rofi在窗口间切换
 
 	{ MODKEY|Mod1Mask,     XK_0,                    setlayout,      {.v = &layouts[0]} },   // win+alt+0 平铺
 	{ MODKEY|Mod1Mask,     XK_1,                    setlayout,      {.v = &layouts[1]} },   // win+alt+1 浮动
