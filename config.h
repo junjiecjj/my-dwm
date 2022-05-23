@@ -276,7 +276,7 @@ static const char *downbrt[]        = {"light", "-U", "5", NULL};
 static const char *windowswitchcmd[] = { "rofi", "-show", "window", NULL };
 
 
-static const char *chromium[]       =          {"google-chrome-stable", "--disk-cache-dir=/tmp/google-chrome-stable", NULL}; //#定义chrome浏览器的快捷键功能
+/* static const char *chromium[]       =          {"google-chrome-stable", "--disk-cache-dir=/tmp/google-chrome-stable", NULL}; //#定义chrome浏览器的快捷键功能 */
 static const char *dolphin[]        =          {"dolphin", NULL};	 	  //#定义dolphin文件管理器的快捷键功能
 static const char *nautilus[]       =          {"nautilus", NULL};	 	  //#定义dolphin文件管理器的快捷键功能
 static const char *slimlockcmd[]    =          {"slimlock", NULL };
@@ -299,16 +299,16 @@ static Key keys[] = {
     { MODKEY,              XK_grave,                togglescratch,  {.v = scratchpadcmd } },//win+` 打开一个命令行终端小窗格窗口
     { MODKEY,              XK_x,                    spawn,          {.v = xtermcmd } },     // win+x 新建一个窗格，（开一个终端应用（xterm））
     { MODKEY,              XK_t,                    spawn,          {.v = typoracmd } },    // win+t 新建一个窗格，（开一个终端应用（typora））
-    { MODKEY,              XK_c,                    spawn,          {.v = browsercmd } },   // win+c 呼出chromium浏览器
-    { MODKEY,              XK_g,                    spawn,          {.v = chromium } },     // win+g，呼出chromium浏览器
+    { MODKEY,              XK_g,                    spawn,          {.v = browsercmd } },   // win+c 呼出chromium浏览器
+    /* { MODKEY,              XK_g,                    spawn,          {.v = chromium } },     // win+g，呼出chromium浏览器 */
     // { MODKEY,               XK_d,                    spawn,          {.v = dolphin } },  // win+d，呼出dolphin文件管理器
     { MODKEY,              XK_n,                    spawn,          {.v = nautilus } },     // win+n，呼出dolphin文件管理器
-    { MODKEY|ShiftMask,    XK_b,                    spawn,          {.v = wpcmd } },        //win+b换壁纸
     { MODKEY|ShiftMask,    XK_t,                    spawn,          {.v = trayercmd } },    // win+shift+t 呼出系统托盘
     { MODKEY|ShiftMask,    XK_s,                    spawn,          {.v = sktogglecmd } },  //调出screenkey
     { MODKEY|ShiftMask,    XK_v,                    spawn,          CMD("VBoxManage startvm 'Windows10' --type gui") },
 
     //系统快捷键
+    { MODKEY|ControlMask,           XK_b,                       spawn,          {.v = wpcmd } },        //win+b换壁纸
     //========截图======================
 	{ MODKEY|ShiftMask,             XK_Print,                   spawn,          {.v= deepinscreencmd} },           //win+Control+print  deepin截图
     { ShiftMask,                    XK_Print,                   spawn,          {.v= flameshot_choicecmd} },
@@ -353,11 +353,11 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,                   XK_Up,                      spawn,          SHCMD("transset-df -a --inc .1") },  //增加当前窗格应用的透明度
 	{ MODKEY|Mod1Mask,                   XK_Home,                    spawn,          SHCMD("transset-df -a .75") },      //恢复当前窗格应用的初始默认的透明度
 	//以下是增加的
-	// { MODKEY|ControlMask,             XK_l,                    spawn,          {.v = slimlockcmd } },     //锁屏
+	// { MODKEY|ControlMask,             XK_l,                    spawn,          {.v = slimlockcmd } },            //锁屏
     { MODKEY|ControlMask,                XK_Delete,               spawn,          CMD("betterlockscreen -l") },
 	/* { MODKEY|Mod1Mask,                   XK_l,                    spawn,          SHCMD("slock") },             //锁屏 */
-    { MODKEY|ControlMask,                XK_l,                    spawn,          {.v = slockcmd } },           //锁屏
-    { MODKEY|ControlMask,                XK_x,                    spawn,          {.v = xscreensaverlockcmd } },//锁屏
+    { MODKEY|ControlMask,                XK_l,                    spawn,          {.v = slockcmd } },              //锁屏
+    { MODKEY|ControlMask,                XK_x,                    spawn,          {.v = xscreensaverlockcmd } },   //锁屏
 
     { MODKEY|ControlMask,                XK_s,                    spawn,          {.v = suspendcmd } },  // win+ctrl+s休眠
     { MODKEY|ControlMask,                XK_k,                    spawn,          CMD("xkill") },
@@ -396,8 +396,8 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,     XK_minus,                setlayout,      {.v = &layouts[10]} },  // win+alt+- 主窗口在左边，其他窗口像单窗口一样堆叠在右边
 
 
-	{ MODKEY|ShiftMask,    XK_space,                setlayout,      {0} },              // Alt +shift + 空格,标签页模式切换,将当前标签页的所有窗口在当前标签页最近所处的模式中切换,默认是在平铺和浮动两模式.
-	{ MODKEY,              XK_space,                togglefloating, {0} },              // Alt + 空格,窗口模式切换,将当前窗口在当前标签页在最近所处的模式中切换,默认是在平铺和浮动两模式.
+	{ MODKEY|ShiftMask,    XK_space,                setlayout,      {0} },              // win +shift + 空格,标签页模式切换,将当前标签页的所有窗口在当前标签页最近所处的模式中切换,默认是在平铺和浮动两模式.
+	{ MODKEY,              XK_space,                togglefloating, {0} },              // win + 空格,窗口模式切换,将当前窗口在当前标签页在最近所处的模式中切换,默认是在平铺和浮动两模式.
 	{ MODKEY|ShiftMask,    XK_f,                    fullscreen,     {0} },              // win+shift+f全屏,只能是平铺窗口，不能是浮动窗口全屏
 
 	// { MODKEY,              XK_comma,                focusmon,       {.i = -1 } },  //win+,多屏时在主副屏之间移动焦点, 移动焦点至左边屏幕，
