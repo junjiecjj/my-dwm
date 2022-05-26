@@ -96,3 +96,19 @@ dwmblocks &
 
 #状态栏.dwnstatus、slstatus、dwmblocks、./dwm_status.sh只需要启动一个
 # dwmstatus 2>&1 >/dev/null &
+
+
+
+
+
+
+# # System tray
+# if [ -z "$(pgrep trayer)" ] ; then
+#     trayer --edge top --align right --widthtype percent --width 10 --heighttype pixel --height 22  --SetPartialStrut true --transparent true --alpha 60 --tint 0x777777 --expand true
+# fi
+
+
+# if [ -z "$(pgrep stalonetray)" ] ; then
+#     # stalonetray  -geometry  "10x1-0+0" -bg "#777777" --icon-size 17 --transparent false --sticky true --window-layer "bottom"  &
+#     stalonetray  -geometry  "10x1-0+0" -bg "#777777" --icon-size 16 --transparent false --sticky true --window-layer "bottom" --grow-gravity  NW  --icon-gravity NW  --max-geometry 0x0 --scrollbars none --sticky  true  --window-type  dock
+# fi
