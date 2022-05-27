@@ -85,7 +85,7 @@ bash ~/.fehbg
 
 
 # 状态栏
-dwmblocks &
+# dwmblocks &
 
 # sleep 4
 
@@ -98,7 +98,10 @@ dwmblocks &
 # dwmstatus 2>&1 >/dev/null &
 
 
-
+#状态栏
+xmobar  ~/.xmonad/xmobar/xmobar-dual.hs
+# xmobar  ~/.xmonad/xmobar/xmobarrc.hs
+# xmobar  ~/.config/leftwm/themes/basic_xmobar/xmobar-config.hs
 
 
 
