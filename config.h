@@ -308,7 +308,7 @@ static Key keys[] = {
     { MODKEY|ShiftMask,    XK_v,                    spawn,          CMD("VBoxManage startvm 'Windows10' --type gui") },
 
     //系统快捷键
-    { MODKEY|ControlMask,           XK_b,                       spawn,          {.v = wpcmd } },        //win+b换壁纸
+    { MODKEY|ShiftMask,             XK_b,                       spawn,          {.v = wpcmd } },        //win+b换壁纸
     //========截图======================
 	{ MODKEY|ShiftMask,             XK_Print,                   spawn,          {.v= deepinscreencmd} },           //win+Control+print  deepin截图
     { ShiftMask,                    XK_Print,                   spawn,          {.v= flameshot_choicecmd} },
@@ -354,7 +354,7 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,                   XK_Home,                    spawn,          SHCMD("transset-df -a .75") },      //恢复当前窗格应用的初始默认的透明度
 	//以下是增加的
 	// { MODKEY|ControlMask,             XK_l,                    spawn,          {.v = slimlockcmd } },            //锁屏
-    { MODKEY|ControlMask,                XK_Delete,               spawn,          CMD("betterlockscreen -l") },
+    { MODKEY|ControlMask,                XK_b,                    spawn,          CMD("betterlockscreen -l") },    //锁屏
 	/* { MODKEY|Mod1Mask,                   XK_l,                    spawn,          SHCMD("slock") },             //锁屏 */
     { MODKEY|ControlMask,                XK_l,                    spawn,          {.v = slockcmd } },              //锁屏
     { MODKEY|ControlMask,                XK_x,                    spawn,          {.v = xscreensaverlockcmd } },   //锁屏
