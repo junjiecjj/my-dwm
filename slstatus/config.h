@@ -67,7 +67,7 @@ static const char unknown_str[] = "n/a";
 static const char wk[] = "wlp59s0";
 
 static const struct arg args[] = {
-	/* function format          argument */
+	/* function format          argument ⬇️⬆️*/
 	/* { cpu_perc, "[CPU %s%%]", NULL    }, */
 	/* { ram_perc, "[RAM %s%%]", NULL    }, */
 	/* { wifi_perc, "[WIFI %s%%]", "wlp59s0"    }, */
@@ -77,11 +77,11 @@ static const struct arg args[] = {
 	/* { disk_perc, "[HD %s%%]", "/"    }, */
 	/* { datetime, "[%s]", "%F %H:%M" }, */
 
-    // 函数           格式           参数
-	{ netspeed_rx,     "⬇️:%s ",           wk   },
-	{ netspeed_tx,     "⬆️:%s",            wk    },
+    // 函数           格式           参数🧠🚨🧭
+	{ netspeed_rx,     ":%s ",           wk   },
+	{ netspeed_tx,     ":%s ",            wk    },
     // 用 "|" 间隔两项信息；参数 NULL 表示空，就是没有参数
-    { separator,      "|",                NULL },
+    /* { separator,      "|",                NULL }, */
     // %s 代表 ipv4 的值；参数需要用双引号引起来，不能是单引号，
 	{ wifi_essid,     ":%s@",            wk   },
     { ipv4,           "%s",               wk },
@@ -99,7 +99,7 @@ static const struct arg args[] = {
     /* { disk_total,      "/%s]",              "/home" }, */
 	/* { disk_perc,      "[HD %s%%]",       "/"  }, */
     { separator,      "|",               NULL },
-    { ram_used,        "💻:%s",          NULL },
+    { ram_used,        "💻🧠:%s",          NULL },
     { ram_total,       "/%s",               NULL },
     /* { swap_used,       ":%s",         NULL }, */
     /* { swap_total,      "/%s",             NULL }, */

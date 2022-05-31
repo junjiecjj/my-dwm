@@ -85,13 +85,13 @@ bash ~/.fehbg
 
 
 # 状态栏
-dwmblocks &
+# dwmblocks &
 
 # sleep 4
 
 #状态栏
 # killall slstatus
-# slstatus &
+slstatus &
 
 
 #状态栏.dwnstatus、slstatus、dwmblocks、./dwm_status.sh只需要启动一个

@@ -354,9 +354,9 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,                   XK_Home,                    spawn,          SHCMD("transset-df -a .75") },      //恢复当前窗格应用的初始默认的透明度
 	//以下是增加的
 	// { MODKEY|ControlMask,             XK_l,                    spawn,          {.v = slimlockcmd } },            //锁屏
-    { MODKEY|ControlMask,                XK_b,                    spawn,          CMD("betterlockscreen -l") },    //锁屏
+    { MODKEY|ControlMask,                XK_b,                    spawn,          CMD("betterlockscreen -l  dim") },    //锁屏
 	/* { MODKEY|Mod1Mask,                   XK_l,                    spawn,          SHCMD("slock") },             //锁屏 */
-    { MODKEY|ControlMask,                XK_l,                    spawn,          {.v = slockcmd } },              //锁屏
+    { MODKEY|ControlMask,                XK_s,                    spawn,          {.v = slockcmd } },              //锁屏
     { MODKEY|ControlMask,                XK_x,                    spawn,          {.v = xscreensaverlockcmd } },   //锁屏
 
     { MODKEY|ControlMask,                XK_s,                    spawn,          {.v = suspendcmd } },  // win+ctrl+s休眠
@@ -367,8 +367,8 @@ static Key keys[] = {
 
 
     //窗口快捷键
-    { MODKEY,              XK_j,                    incnmaster,     {.i = +1 } },     // Win+j 插入主窗格的堆栈，窗口竖向排列
-    { MODKEY,              XK_k,                    incnmaster,     {.i = -1 } },     // Win+k 减少主窗格的堆栈数，窗口横向排列
+    { MODKEY|ShiftMask,    XK_h,                    incnmaster,     {.i = +1 } },     // Win+j 插入主窗格的堆栈，窗口竖向排列
+    { MODKEY|ShiftMask,    XK_l,                    incnmaster,     {.i = -1 } },     // Win+k 减少主窗格的堆栈数，窗口横向排列
     { MODKEY|ShiftMask,    XK_j,                    rotatestack,    {.i = +1 } },     // Win+shift+j 顺时针循环滚动当前窗口的窗格位置
     { MODKEY|ShiftMask,    XK_k,                    rotatestack,    {.i = -1 } },     // Win+shift+k 逆时针循环滚动当前窗口的窗格位置
     { MODKEY,              XK_minus,                setmfact,       {.f = -0.03} },   // Win+- 将当前的窗格宽度减向左扩展或缩小,调整窗口大小向左
@@ -384,22 +384,22 @@ static Key keys[] = {
 	{ MODKEY,              XK_b,                    view,           {0} },      // 在当前标签页上次聚焦的标签页之间切换
 	{ MODKEY,              XK_p,                    spawn,          {.v = windowswitchcmd } },  //利用rofi在窗口间切换
 
-	{ MODKEY|Mod1Mask,     XK_0,                    setlayout,      {.v = &layouts[0]} },   // win+alt+0 平铺
-	{ MODKEY|Mod1Mask,     XK_1,                    setlayout,      {.v = &layouts[1]} },   // win+alt+1 浮动
-	{ MODKEY|Mod1Mask,     XK_2,                    setlayout,      {.v = &layouts[2]} },   // win+alt+2 单窗口
-	{ MODKEY|Mod1Mask,     XK_3,                    setlayout,      {.v = &layouts[3]} },   // win+alt+3 网格分割,一列两行、两行两列、三行三列..
+	{ MODKEY|Mod1Mask,     XK_t,                    setlayout,      {.v = &layouts[0]} },   // win+alt+0 平铺
+	{ MODKEY|Mod1Mask,     XK_f,                    setlayout,      {.v = &layouts[1]} },   // win+alt+1 浮动
+	{ MODKEY|Mod1Mask,     XK_l,                    setlayout,      {.v = &layouts[2]} },   // win+alt+2 单窗口
+	{ MODKEY|Mod1Mask,     XK_g,                    setlayout,      {.v = &layouts[3]} },   // win+alt+3 网格分割,一列两行、两行两列、三行三列..
 	{ MODKEY|Mod1Mask,     XK_4,                    setlayout,      {.v = &layouts[4]} },   // win+alt+4 主窗堆在上，副窗堆在下，副窗格垂直分割
 	{ MODKEY|Mod1Mask,     XK_5,                    setlayout,      {.v = &layouts[5]} },   // win+alt+5 主窗堆在上，副窗堆在下，副窗格水平分割
 	{ MODKEY|Mod1Mask,     XK_6,                    setlayout,      {.v = &layouts[6]} },   // win+alt+6 主窗口在中间，副窗口在左右边，副窗口垂直分割
 	{ MODKEY|Mod1Mask,     XK_7,                    setlayout,      {.v = &layouts[7]} },   // win+alt+7 主窗口浮动在中间，副窗口平铺在后面，副窗口水平分割
 	{ MODKEY|Mod1Mask,     XK_8,                    setlayout,      {.v = &layouts[8]} },   // win+alt+8 主窗口在左边，新建窗口在右边螺旋摆放
 	{ MODKEY|Mod1Mask,     XK_9,                    setlayout,      {.v = &layouts[9]} },   // win+alt+9 与主8类似
-	{ MODKEY|Mod1Mask,     XK_minus,                setlayout,      {.v = &layouts[10]} },  // win+alt+- 主窗口在左边，其他窗口像单窗口一样堆叠在右边
+	{ MODKEY|Mod1Mask,     XK_d,                    setlayout,      {.v = &layouts[10]} },  // win+alt+- 主窗口在左边，其他窗口像单窗口一样堆叠在右边
 
 
 	{ MODKEY|ShiftMask,    XK_space,                setlayout,      {0} },              // win +shift + 空格,标签页模式切换,将当前标签页的所有窗口在当前标签页最近所处的模式中切换,默认是在平铺和浮动两模式.
 	{ MODKEY,              XK_space,                togglefloating, {0} },              // win + 空格,窗口模式切换,将当前窗口在当前标签页在最近所处的模式中切换,默认是在平铺和浮动两模式.
-	{ MODKEY|ShiftMask,    XK_f,                    fullscreen,     {0} },              // win+shift+f全屏,只能是平铺窗口，不能是浮动窗口全屏
+	{ MODKEY,              XK_f,                    fullscreen,     {0} },              // win+shift+f全屏,只能是平铺窗口，不能是浮动窗口全屏
 
 	// { MODKEY,              XK_comma,                focusmon,       {.i = -1 } },  //win+,多屏时在主副屏之间移动焦点, 移动焦点至左边屏幕，
 	// { MODKEY,              XK_period,               focusmon,       {.i = +1 } },  //win+. 在多显示器间进行切换, 移动焦点至右边屏幕
@@ -420,15 +420,15 @@ static Key keys[] = {
 
     /* { MODKEY,              XK_Up,                   focusstack,     {.i = +1 } },	  // win+Up 将光标焦点移动到下一个窗格,在窗口间切换 */
     /* { MODKEY,              XK_Down,                 focusstack,     {.i = -1 } },     // win+Down 将光标焦点移动到上一个窗格 */
-    { MODKEY,              XK_h,                    focusstack,     {.i = +1 } },	  // win+h 将光标焦点移动到上一个窗格,在同一个标签页的不同窗口间切换,
-    { MODKEY,              XK_l,                    focusstack,     {.i = -1 } },     // win+l 将光标焦点移动到下一个窗格,在同一个标签页的不同窗口间切换,
+    { MODKEY,              XK_k,                    focusstack,     {.i = +1 } },	  // win+h 将光标焦点移动到上一个窗格,在同一个标签页的不同窗口间切换,
+    { MODKEY,              XK_j,                    focusstack,     {.i = -1 } },     // win+l 将光标焦点移动到下一个窗格,在同一个标签页的不同窗口间切换,
     { MODKEY,              XK_period,               focusstack,     {.i = +1 } },	  // win+, 将光标焦点移动到上一个窗格,在同一个标签页的不同窗口间切换,
     { MODKEY,              XK_comma,                focusstack,     {.i = -1 } },     // win+. 将光标焦点移动到下一个窗格,在同一个标签页的不同窗口间切换,
     { MODKEY,              XK_q,                    focusstack,     {.i = +1 } },	  // win+q 将光标焦点移动到上一个窗格,在同一个标签页的不同窗口间切换,
     { MODKEY,              XK_w,                    focusstack,     {.i = -1 } },     // win+w 将光标焦点移动到下一个窗格,在同一个标签页的不同窗口间切换,
 
-	{ MODKEY|ShiftMask,    XK_h,                    viewtoleft,       {0} },        // win+Shift+h 将光标焦点移动到左边的标签页
-	{ MODKEY|ShiftMask,    XK_l,                    viewtoright,      {0} },        // win+shift+l 将光标焦点移动到右边的标签页
+	{ MODKEY,              XK_h,                    viewtoleft,       {0} },        // win+Shift+h 将光标焦点移动到左边的标签页
+	{ MODKEY,              XK_l,                    viewtoright,      {0} },        // win+shift+l 将光标焦点移动到右边的标签页
 	{ MODKEY|ShiftMask,    XK_comma,                viewtoleft,       {0} },        // win+shift+, 将光标焦点移动到左边的标签页
 	{ MODKEY|ShiftMask,    XK_period,               viewtoright,      {0} },        // win+shift+. 将光标焦点移动到右边的标签页
     { MODKEY,              XK_semicolon,            viewtoleft,     {0} },        // win+; 将光标焦点移动到左边的标签页

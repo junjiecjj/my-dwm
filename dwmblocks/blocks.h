@@ -14,7 +14,7 @@
 
 
 
-//Modify this file to change what commands output to your statusbar, and recompile using the make command.
+//Modify this file to change what commands output to your statusbar, and recompile using the make command.🧠🧭
 static const Block blocks[] = {
         /*Icon*/        /*Command*/                                             /*Update Interval*/            /*Update Signal*/
         {" ",          "/home/jack/tmp/my-dwm/dwmblocks/scripts/wlan.sh",             1,              0}, //网速
