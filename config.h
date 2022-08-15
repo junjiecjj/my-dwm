@@ -414,6 +414,7 @@ static Key keys[] = {
 
     /* 显示器之间完全独立，每个显示器都可以打开所有的桌面，且显示器1内切换桌面不会影响显示器2 */
 	{ MODKEY,              XK_bracketleft,          focusmon,       {.i = -1 } },  //win+[多屏时在主副屏之间移动焦点, 移动焦点至左边屏幕，
+	{ MODKEY,              XK_Escape,               focusmon,       {.i = -1 } },  //win+[多屏时在主副屏之间移动焦点, 移动焦点至左边屏幕，
 	{ MODKEY,              XK_bracketright,         focusmon,       {.i = +1 } },  //win+]在多显示器间进行切换. 移动焦点至右边屏幕
 	{ MODKEY,              XK_a,          focusmon,       {.i = -1 } },  //win+[多屏时在主副屏之间移动焦点, 移动焦点至左边屏幕，
 	{ MODKEY,              XK_s,         focusmon,       {.i = +1 } },  //win+]在多显示器间进行切换. 移动焦点至右边屏幕
